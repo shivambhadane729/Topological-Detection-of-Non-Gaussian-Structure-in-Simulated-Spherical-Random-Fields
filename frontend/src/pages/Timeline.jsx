@@ -10,6 +10,7 @@ const scenes = [
     kind: 'bang',
     overlay: 'Birth of the Universe',
     image: '/images/timeline/heic1509a.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/heic1509a.jpg',
     accent: 'from-white via-cyan-200 to-transparent',
   },
   {
@@ -19,6 +20,7 @@ const scenes = [
     kind: 'expansion',
     overlay: 'The Universe Begins Expanding',
     image: '/images/timeline/potw2041a.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/potw2041a.jpg',
     accent: 'from-violet-300 via-fuchsia-200 to-transparent',
   },
   {
@@ -28,6 +30,7 @@ const scenes = [
     kind: 'radiation',
     overlay: 'Ancient Cosmic Radiation is Released',
     image: '/images/timeline/cmb_map.jpg',
+    remoteImage: 'https://map.gsfc.nasa.gov/media/121483main_cmb_lrg.jpg',
     accent: 'from-amber-200 via-orange-200 to-transparent',
   },
   {
@@ -37,6 +40,7 @@ const scenes = [
     kind: 'cmb',
     overlay: 'Cosmic Microwave Background (CMB)',
     image: '/images/timeline/planck_map.jpg',
+    remoteImage: 'https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2013/03/planck_map_of_the_microwave_sky/12815551-1-eng-GB/Planck_map_of_the_microwave_sky.jpg',
     accent: 'from-sky-300 via-blue-200 to-transparent',
     subtitle: 'A snapshot of the early universe',
   },
@@ -47,6 +51,7 @@ const scenes = [
     kind: 'patterns',
     overlay: 'Tiny Hidden Patterns Exist in the Data',
     image: '/images/timeline/planck2013_lfi_ompr2.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/planck2013_lfi_ompr2.jpg',
     accent: 'from-emerald-300 via-teal-200 to-transparent',
   },
   {
@@ -56,6 +61,7 @@ const scenes = [
     kind: 'fail',
     overlay: 'Traditional Methods Miss Complex Structures',
     image: '/images/timeline/wave.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/edu_what_is_a_wave.jpg',
     accent: 'from-stone-300 via-zinc-200 to-transparent',
   },
   {
@@ -65,6 +71,7 @@ const scenes = [
     kind: 'topology',
     overlay: 'Topology-Based Analysis',
     image: '/images/timeline/cosmic_web.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/cosmic-web-illustration.jpg',
     accent: 'from-cyan-300 via-indigo-200 to-transparent',
     subtitle: 'Analyzing the shape of data',
   },
@@ -75,6 +82,7 @@ const scenes = [
     kind: 'detected',
     overlay: 'Hidden Structures are Detected',
     image: '/images/timeline/hs2015_web.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/hs-2015-08-a-web_print.jpg',
     accent: 'from-rose-300 via-orange-200 to-transparent',
   },
   {
@@ -84,6 +92,7 @@ const scenes = [
     kind: 'ending',
     overlay: 'Towards a Better Understanding of the Early Universe',
     image: '/images/timeline/potw2043a.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/potw2043a.jpg',
     accent: 'from-white via-violet-200 to-transparent',
     subtitle: 'Topology-Based Analysis of Cosmic Microwave Background Data',
     finalTitle: 'CosmoTDA',
@@ -231,8 +240,18 @@ function TimelineCard({ scene }) {
         <span>{scene.number}</span>
         <span className="timeline-card-label"><SceneIcon kind={scene.kind} /> {scene.title}</span>
       </div>
-      <div className="relative overflow-hidden rounded-[2rem] border border-outline bg-black shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_30px_90px_rgba(0,0,0,0.6)]">
-        <img src={scene.image || scenePlaceholderSVG(scene.title, Number(scene.number) - 1)} alt={scene.title} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="relative overflow-hidden rounded-[2rem] border border-outline bg-black shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_30px_90px_rgba(0,0,0,0.6)]">
+        <img
+          src={scene.image || scenePlaceholderSVG(scene.title, Number(scene.number) - 1)}
+          alt={scene.title}
+          className="absolute inset-0 h-full w-full object-cover"
+          onError={(e) => {
+            if (scene.remoteImage && e.currentTarget.src !== scene.remoteImage) {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = scene.remoteImage;
+            }
+          }}
+        />
         <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]" />
         <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
           <div className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-[10px] uppercase tracking-[0.4em] text-on-surface-variant backdrop-blur-md`}>

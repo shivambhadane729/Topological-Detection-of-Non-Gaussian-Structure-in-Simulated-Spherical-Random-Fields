@@ -19,6 +19,7 @@ const scenes = [
     detail: 'A cinematic Big Bang opens the story with expanding particles and cosmic waves.',
     accent: 'from-white via-zinc-300 to-zinc-500',
     image: '/images/timeline/heic1509a.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/heic1509a.jpg',
   },
   {
     kind: 'expansion',
@@ -29,6 +30,7 @@ const scenes = [
     detail: 'This phase shows the universe stretching into a structure-rich landscape.',
     accent: 'from-zinc-300 via-zinc-400 to-zinc-600',
     image: '/images/timeline/potw2041a.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/potw2041a.jpg',
   },
   {
     kind: 'cmb',
@@ -39,6 +41,7 @@ const scenes = [
     detail: 'A realistic glowing sphere reveals red and blue temperature fluctuations inspired by Planck data.',
     accent: 'from-zinc-200 via-zinc-400 to-zinc-600',
     image: '/images/timeline/planck_map.jpg',
+    remoteImage: 'https://map.gsfc.nasa.gov/media/121483main_cmb_lrg.jpg',
   },
   {
     kind: 'patterns',
@@ -49,6 +52,7 @@ const scenes = [
     detail: 'The scene highlights where topology can uncover what the eye cannot easily see.',
     accent: 'from-zinc-300 via-zinc-400 to-zinc-500',
     image: '/images/timeline/planck2013_lfi_ompr2.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/planck2013_lfi_ompr2.jpg',
   },
   {
     kind: 'stats',
@@ -59,6 +63,7 @@ const scenes = [
     detail: 'This scene explains why conventional summaries are not enough for the morphology of CMB maps.',
     accent: 'from-zinc-300 via-zinc-400 to-zinc-500',
     image: '/images/timeline/wave.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/edu_what_is_a_wave.jpg',
   },
   {
     kind: 'topology',
@@ -69,6 +74,7 @@ const scenes = [
     detail: 'Topology converts a noisy map into interpretable shape signatures.',
     accent: 'from-zinc-200 via-zinc-400 to-zinc-600',
     image: '/images/timeline/cosmic_web.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/cosmic-web-illustration.jpg',
   },
   {
     kind: 'engine',
@@ -88,6 +94,7 @@ const scenes = [
     detail: 'The map now shows where topology reveals anomalies hidden in the cosmic background.',
     accent: 'from-zinc-200 via-zinc-400 to-zinc-600',
     image: '/images/timeline/hs2015_web.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/hs-2015-08-a-web_print.jpg',
   },
   {
     kind: 'ending',
@@ -99,6 +106,7 @@ const scenes = [
     accent: 'from-white via-zinc-200 to-zinc-400',
     finalTitle: 'TopoSphere',
     image: '/images/timeline/potw2043a.jpg',
+    remoteImage: 'https://www.nasa.gov/sites/default/files/thumbnails/image/potw2043a.jpg',
   },
 ];
 
@@ -247,7 +255,17 @@ export default function TimelineExperience() {
                     <ScenePanel key={scene.title} scene={scene} active={index === activeIndex} />
 
                     <div className="min-h-[34rem] rounded-[2rem] border border-dashed border-white/8 bg-black/35 overflow-hidden" aria-hidden="true">
-                      <img src={scene.image || scenePlaceholderSVG(scene.title, index)} alt={scene.title} className="h-full w-full object-cover" />
+                      <img
+                        src={scene.image || scenePlaceholderSVG(scene.title, index)}
+                        alt={scene.title}
+                        className="h-full w-full object-cover"
+                        onError={(e) => {
+                          if (scene.remoteImage && e.currentTarget.src !== scene.remoteImage) {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = scene.remoteImage;
+                          }
+                        }}
+                      />
                     </div>
 
                 <AnimatePresence mode="wait">
