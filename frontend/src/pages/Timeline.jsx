@@ -9,6 +9,7 @@ const scenes = [
     caption: 'A cosmic shockwave ignites the first light.',
     kind: 'bang',
     overlay: 'Birth of the Universe',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/heic1509a.jpg',
     accent: 'from-white via-cyan-200 to-transparent',
   },
   {
@@ -17,6 +18,7 @@ const scenes = [
     caption: 'Matter, energy, and galaxies begin to unfold.',
     kind: 'expansion',
     overlay: 'The Universe Begins Expanding',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/potw2041a.jpg',
     accent: 'from-violet-300 via-fuchsia-200 to-transparent',
   },
   {
@@ -25,6 +27,7 @@ const scenes = [
     caption: 'Cooling plasma leaves behind a fading glow.',
     kind: 'radiation',
     overlay: 'Ancient Cosmic Radiation is Released',
+    image: 'https://map.gsfc.nasa.gov/media/121483main_cmb_lrg.jpg',
     accent: 'from-amber-200 via-orange-200 to-transparent',
   },
   {
@@ -33,6 +36,7 @@ const scenes = [
     caption: 'A spherical map preserves the earliest imprint.',
     kind: 'cmb',
     overlay: 'Cosmic Microwave Background (CMB)',
+    image: 'https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2013/03/planck_map_of_the_microwave_sky/12815551-1-eng-GB/Planck_map_of_the_microwave_sky.jpg',
     accent: 'from-sky-300 via-blue-200 to-transparent',
     subtitle: 'A snapshot of the early universe',
   },
@@ -42,6 +46,7 @@ const scenes = [
     caption: 'Subtle structures emerge inside temperature fluctuations.',
     kind: 'patterns',
     overlay: 'Tiny Hidden Patterns Exist in the Data',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/planck2013_lfi_ompr2.jpg',
     accent: 'from-emerald-300 via-teal-200 to-transparent',
   },
   {
@@ -50,6 +55,7 @@ const scenes = [
     caption: 'Gaussian summaries blur away the complex shape.',
     kind: 'fail',
     overlay: 'Traditional Methods Miss Complex Structures',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/edu_what_is_a_wave.jpg',
     accent: 'from-stone-300 via-zinc-200 to-transparent',
   },
   {
@@ -58,6 +64,7 @@ const scenes = [
     caption: 'Connected components and loops reveal data geometry.',
     kind: 'topology',
     overlay: 'Topology-Based Analysis',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/cosmic-web-illustration.jpg',
     accent: 'from-cyan-300 via-indigo-200 to-transparent',
     subtitle: 'Analyzing the shape of data',
   },
@@ -67,6 +74,7 @@ const scenes = [
     caption: 'Anomalies light up as the topology becomes visible.',
     kind: 'detected',
     overlay: 'Hidden Structures are Detected',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/hs-2015-08-a-web_print.jpg',
     accent: 'from-rose-300 via-orange-200 to-transparent',
   },
   {
@@ -75,6 +83,7 @@ const scenes = [
     caption: 'The universe resolves into a readable cosmic web.',
     kind: 'ending',
     overlay: 'Towards a Better Understanding of the Early Universe',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/potw2043a.jpg',
     accent: 'from-white via-violet-200 to-transparent',
     subtitle: 'Topology-Based Analysis of Cosmic Microwave Background Data',
     finalTitle: 'CosmoTDA',

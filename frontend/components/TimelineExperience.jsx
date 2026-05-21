@@ -18,6 +18,7 @@ const scenes = [
     copy: 'Dark space ignites in a glowing shockwave, setting the scale for everything that follows.',
     detail: 'A cinematic Big Bang opens the story with expanding particles and cosmic waves.',
     accent: 'from-white via-zinc-300 to-zinc-500',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/heic1509a.jpg',
   },
   {
     kind: 'expansion',
@@ -27,6 +28,7 @@ const scenes = [
     copy: 'Matter and radiation begin to spread, galaxies slowly condense, and the cosmic stage expands.',
     detail: 'This phase shows the universe stretching into a structure-rich landscape.',
     accent: 'from-zinc-300 via-zinc-400 to-zinc-600',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/potw2041a.jpg',
   },
   {
     kind: 'cmb',
@@ -36,6 +38,7 @@ const scenes = [
     copy: 'The universe cools and releases relic radiation that becomes the CMB — a map of primordial conditions.',
     detail: 'A realistic glowing sphere reveals red and blue temperature fluctuations inspired by Planck data.',
     accent: 'from-zinc-200 via-zinc-400 to-zinc-600',
+    image: 'https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2013/03/planck_map_of_the_microwave_sky/12815551-1-eng-GB/Planck_map_of_the_microwave_sky.jpg',
   },
   {
     kind: 'patterns',
@@ -45,6 +48,7 @@ const scenes = [
     copy: 'Zoom into fluctuation regions and subtle structures begin to emerge from the heatmap.',
     detail: 'The scene highlights where topology can uncover what the eye cannot easily see.',
     accent: 'from-zinc-300 via-zinc-400 to-zinc-500',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/planck2013_lfi_ompr2.jpg',
   },
   {
     kind: 'stats',
@@ -54,6 +58,7 @@ const scenes = [
     copy: 'Gaussian curves and standard graphs smooth away local complexity, hiding what matters most.',
     detail: 'This scene explains why conventional summaries are not enough for the morphology of CMB maps.',
     accent: 'from-zinc-300 via-zinc-400 to-zinc-500',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/edu_what_is_a_wave.jpg',
   },
   {
     kind: 'topology',
@@ -63,6 +68,7 @@ const scenes = [
     copy: 'Connected nodes, loops, and persistence-like geometry reveal how structures birth and die across scales.',
     detail: 'Topology converts a noisy map into interpretable shape signatures.',
     accent: 'from-zinc-200 via-zinc-400 to-zinc-600',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/cosmic-web-illustration.jpg',
   },
   {
     kind: 'engine',
@@ -81,6 +87,7 @@ const scenes = [
     copy: 'Detected regions pulse on the map and a scientific UI confirms that patterns have been found.',
     detail: 'The map now shows where topology reveals anomalies hidden in the cosmic background.',
     accent: 'from-zinc-200 via-zinc-400 to-zinc-600',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/hs-2015-08-a-web_print.jpg',
   },
   {
     kind: 'ending',
@@ -91,6 +98,7 @@ const scenes = [
     detail: 'The story ends with the project identity: TopoSphere.',
     accent: 'from-white via-zinc-200 to-zinc-400',
     finalTitle: 'TopoSphere',
+    image: 'https://www.nasa.gov/sites/default/files/thumbnails/image/potw2043a.jpg',
   },
 ];
 
