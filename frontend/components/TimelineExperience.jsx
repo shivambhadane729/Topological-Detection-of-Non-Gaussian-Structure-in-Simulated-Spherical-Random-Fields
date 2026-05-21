@@ -246,7 +246,7 @@ export default function TimelineExperience() {
 
                     <ScenePanel key={scene.title} scene={scene} active={index === activeIndex} />
 
-                    <div className="hidden min-h-[34rem] rounded-[2rem] border border-dashed border-white/8 bg-black/35 lg:block overflow-hidden" aria-hidden="true">
+                    <div className="min-h-[34rem] rounded-[2rem] border border-dashed border-white/8 bg-black/35 overflow-hidden" aria-hidden="true">
                       <img src={scene.image || scenePlaceholderSVG(scene.title, index)} alt={scene.title} className="h-full w-full object-cover" />
                     </div>
 
