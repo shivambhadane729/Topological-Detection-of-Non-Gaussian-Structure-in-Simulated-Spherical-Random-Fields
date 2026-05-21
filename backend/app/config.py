@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     
     # CORS
     CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
+    CORS_ORIGIN_REGEX: str = r"https://.*\.vercel\.app"
     
     # File Upload
     MAX_UPLOAD_SIZE_MB: int = 500

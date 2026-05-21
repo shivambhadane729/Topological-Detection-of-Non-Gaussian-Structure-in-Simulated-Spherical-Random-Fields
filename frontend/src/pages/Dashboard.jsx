@@ -16,7 +16,7 @@ import {
   Download,
   FileText
 } from 'lucide-react';
-import { api } from '../services/api';
+import { API_BASE_URL, api } from '../services/api';
 
 const SidebarItem = ({ icon: Icon, label, active, onClick }) => (
   <button
@@ -210,7 +210,7 @@ export default function Dashboard() {
     try {
       const res = await api.exportResults(currentJobId);
       if (res.download_url) {
-        window.open(`http://localhost:8000${res.download_url}`, '_blank');
+        window.open(`${API_BASE_URL}${res.download_url}`, '_blank');
       }
     } catch (err) {
       console.error("Export failed", err);

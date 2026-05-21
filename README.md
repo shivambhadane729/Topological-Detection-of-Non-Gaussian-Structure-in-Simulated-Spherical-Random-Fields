@@ -175,6 +175,39 @@ This starts:
 
 ---
 
+## Deployment
+
+### Frontend on Vercel
+
+Deploy the `frontend/` directory as a Vercel project.
+
+Set this environment variable in Vercel:
+
+```text
+NEXT_PUBLIC_API_URL=https://your-render-service.onrender.com
+```
+
+### Backend on Render
+
+Deploy the backend with the root directory set to `backend/`, or use the included `render.yaml` blueprint.
+
+Render will run:
+
+```text
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+The backend allows localhost and Vercel preview/production domains through CORS.
+
+### Recommended flow
+
+1. Deploy the backend on Render first.
+2. Copy the Render service URL.
+3. Add that URL as `NEXT_PUBLIC_API_URL` in Vercel.
+4. Deploy the frontend on Vercel.
+
+---
+
 ## API Endpoints
 
 | Method | Endpoint                | Description             |

@@ -1,1 +1,0 @@
-# CosmoPH Backend Application

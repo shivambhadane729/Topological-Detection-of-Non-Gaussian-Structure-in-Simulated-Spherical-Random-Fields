@@ -16,7 +16,7 @@ import {
   Download,
   FileText
 } from 'lucide-react';
-import { api } from '../../src/services/api';
+import { API_BASE_URL, api } from '../../src/services/api';
 
   const Card = ({ children, title, icon: Icon, className = '', footer }) => (
     <div className={`card ${className}`}> 
@@ -216,7 +216,7 @@ export default function Dashboard() {
     try {
       const res = await api.exportResults(currentJobId);
       if (res.download_url) {
-        window.open(`http://localhost:8000${res.download_url}`, '_blank');
+        window.open(`${API_BASE_URL}${res.download_url}`, '_blank');
       }
     } catch (err) {
       console.error("Export failed", err);
