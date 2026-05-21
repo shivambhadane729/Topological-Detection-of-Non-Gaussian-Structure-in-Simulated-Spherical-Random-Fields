@@ -24,9 +24,9 @@ function makeCmbTexture() {
   const ctx = canvas.getContext('2d');
 
   const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  gradient.addColorStop(0, '#471b2d');
-  gradient.addColorStop(0.45, '#eef2ff');
-  gradient.addColorStop(1, '#1f3caa');
+  gradient.addColorStop(0, '#080808');
+  gradient.addColorStop(0.45, '#1a1a1a');
+  gradient.addColorStop(1, '#050505');
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -35,9 +35,8 @@ function makeCmbTexture() {
     const y = Math.random() * canvas.height;
     const radius = Math.random() * 12 + 2;
     const hot = Math.random() > 0.5;
-    const hue = hot ? 350 + Math.random() * 20 : 210 + Math.random() * 25;
-    const alpha = 0.06 + Math.random() * 0.16;
-    const color = hot ? `hsla(${hue}, 92%, 66%, ${alpha})` : `hsla(${hue}, 90%, 72%, ${alpha})`;
+    const alpha = 0.03 + Math.random() * 0.08;
+    const color = hot ? `hsla(0, 0%, ${70 + Math.random() * 18}%, ${alpha})` : `hsla(0, 0%, ${55 + Math.random() * 18}%, ${alpha})`;
     const noise = ctx.createRadialGradient(x, y, 0, x, y, radius);
     noise.addColorStop(0, color);
     noise.addColorStop(1, 'transparent');
@@ -100,19 +99,11 @@ function BigBangScene() {
       <group ref={core}>
         <mesh>
           <sphereGeometry args={[0.85, 64, 64]} />
-          <meshPhysicalMaterial
-            color="#ffffff"
-            emissive="#ffffff"
-            emissiveIntensity={2.5}
-            roughness={0.1}
-            metalness={0.1}
-            transparent
-            opacity={0.9}
-          />
+          <meshPhysicalMaterial color="#f5f5f5" emissive="#ffffff" emissiveIntensity={0.6} roughness={0.12} metalness={0.05} transparent opacity={0.9} />
         </mesh>
         <mesh>
           <ringGeometry args={[1.3, 1.55, 96]} />
-          <meshBasicMaterial color="#ffffff" transparent opacity={0.42} side={THREE.DoubleSide} />
+          <meshBasicMaterial color="#e5e5e5" transparent opacity={0.25} side={THREE.DoubleSide} />
         </mesh>
       </group>
     </group>
@@ -131,22 +122,22 @@ function ExpansionScene() {
 
   return (
     <group ref={cloud}>
-      <Sparkles count={360} scale={14} size={2.8} speed={0.42} color="#9ca3ff" />
+      <Sparkles count={360} scale={14} size={2.8} speed={0.42} color="#d4d4d4" />
       <Float floatIntensity={2.2} rotationIntensity={0.7}>
         <mesh position={[-1.8, 0.6, 0]}>
           <sphereGeometry args={[0.75, 40, 40]} />
-          <meshPhysicalMaterial color="#c4b5fd" emissive="#8b5cf6" emissiveIntensity={0.45} transparent opacity={0.9} />
+          <meshPhysicalMaterial color="#d4d4d4" emissive="#ffffff" emissiveIntensity={0.18} transparent opacity={0.9} />
         </mesh>
       </Float>
       <Float floatIntensity={1.8} rotationIntensity={0.5}>
         <mesh position={[1.7, -0.4, -0.5]}>
           <sphereGeometry args={[0.95, 44, 44]} />
-          <meshPhysicalMaterial color="#93c5fd" emissive="#60a5fa" emissiveIntensity={0.4} transparent opacity={0.85} />
+          <meshPhysicalMaterial color="#bdbdbd" emissive="#ffffff" emissiveIntensity={0.16} transparent opacity={0.85} />
         </mesh>
       </Float>
       <mesh>
         <planeGeometry args={[12, 8, 1, 1]} />
-        <meshBasicMaterial color="#150d29" transparent opacity={0.2} />
+        <meshBasicMaterial color="#0b0b0b" transparent opacity={0.45} />
       </mesh>
     </group>
   );
@@ -171,8 +162,8 @@ function CmbSphere({ tone = 'cmb' }) {
         <meshPhysicalMaterial
           map={texture}
           color="#ffffff"
-          emissive={tone === 'detected' ? '#f8fafc' : '#dbeafe'}
-          emissiveIntensity={0.32}
+          emissive="#ffffff"
+          emissiveIntensity={0.14}
           roughness={0.2}
           metalness={0.1}
           clearcoat={0.3}
@@ -180,9 +171,9 @@ function CmbSphere({ tone = 'cmb' }) {
       </mesh>
       <mesh ref={atmosphere}>
         <sphereGeometry args={[1.9, 96, 96]} />
-        <meshBasicMaterial color="#60a5fa" transparent opacity={0.08} />
+        <meshBasicMaterial color="#d4d4d4" transparent opacity={0.06} />
       </mesh>
-      <Sparkles count={160} scale={5.5} size={2.4} speed={0.35} color="#dbeafe" />
+      <Sparkles count={160} scale={5.5} size={2.4} speed={0.35} color="#e5e5e5" />
     </group>
   );
 }
@@ -210,21 +201,21 @@ function TopologyScene() {
       <Float floatIntensity={1.8} rotationIntensity={0.45}>
         <mesh ref={core}>
           <torusKnotGeometry args={[1.2, 0.34, 180, 20]} />
-          <meshPhysicalMaterial color="#f8fafc" emissive="#38bdf8" emissiveIntensity={0.6} roughness={0.15} metalness={0.3} />
+          <meshPhysicalMaterial color="#e5e5e5" emissive="#ffffff" emissiveIntensity={0.12} roughness={0.15} metalness={0.2} />
         </mesh>
       </Float>
       <group ref={ring}>
         <mesh>
           <torusGeometry args={[2.1, 0.06, 16, 120]} />
-          <meshBasicMaterial color="#a855f7" transparent opacity={0.55} />
+          <meshBasicMaterial color="#bdbdbd" transparent opacity={0.28} />
         </mesh>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[2.45, 0.04, 16, 120]} />
-          <meshBasicMaterial color="#22d3ee" transparent opacity={0.45} />
+          <meshBasicMaterial color="#e5e5e5" transparent opacity={0.22} />
         </mesh>
       </group>
-      <Line points={points} color="#f8fafc" lineWidth={1.5} transparent opacity={0.55} />
-      <Sparkles count={180} scale={6.5} size={2.1} speed={0.4} color="#e0f2fe" />
+      <Line points={points} color="#f5f5f5" lineWidth={1.5} transparent opacity={0.38} />
+      <Sparkles count={180} scale={6.5} size={2.1} speed={0.4} color="#f5f5f5" />
     </group>
   );
 }
@@ -238,25 +229,25 @@ function EngineScene() {
 
   return (
     <group>
-      <Sparkles count={260} scale={7} size={2.2} speed={0.35} color="#f8fafc" />
+      <Sparkles count={260} scale={7} size={2.2} speed={0.35} color="#f5f5f5" />
       <mesh>
         <sphereGeometry args={[0.9, 64, 64]} />
-        <meshPhysicalMaterial color="#ffffff" emissive="#a78bfa" emissiveIntensity={0.75} roughness={0.16} metalness={0.22} />
+        <meshPhysicalMaterial color="#e5e5e5" emissive="#ffffff" emissiveIntensity={0.16} roughness={0.16} metalness={0.08} />
       </mesh>
       <group ref={ring}>
         <mesh>
           <torusGeometry args={[1.9, 0.12, 24, 160]} />
-          <meshBasicMaterial color="#60a5fa" transparent opacity={0.48} />
+          <meshBasicMaterial color="#d4d4d4" transparent opacity={0.2} />
         </mesh>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[2.35, 0.06, 20, 160]} />
-          <meshBasicMaterial color="#f472b6" transparent opacity={0.35} />
+          <meshBasicMaterial color="#bdbdbd" transparent opacity={0.16} />
         </mesh>
       </group>
       <Float floatIntensity={2.2} rotationIntensity={0.7}>
         <mesh position={[-1.8, 0.6, 0.5]}>
           <sphereGeometry args={[0.18, 24, 24]} />
-          <meshBasicMaterial color="#ffffff" />
+          <meshBasicMaterial color="#e5e5e5" />
         </mesh>
       </Float>
       <Float floatIntensity={2.3} rotationIntensity={0.7}>
@@ -291,17 +282,17 @@ function DetectedScene() {
           <meshBasicMaterial color="#22d3ee" transparent opacity={0.55} />
         </mesh>
       </group>
-      <Sparkles count={240} scale={7.2} size={2.1} speed={0.38} color="#fef3c7" />
+      <Sparkles count={240} scale={7.2} size={2.1} speed={0.38} color="#e5e5e5" />
       <Float floatIntensity={2} rotationIntensity={0.6}>
         <mesh position={[1.3, 0.9, 0.8]}>
           <sphereGeometry args={[0.22, 28, 28]} />
-          <meshBasicMaterial color="#f8fafc" />
+          <meshBasicMaterial color="#f5f5f5" />
         </mesh>
       </Float>
       <Float floatIntensity={2} rotationIntensity={0.6}>
         <mesh position={[-1.4, -0.7, -0.2]}>
           <sphereGeometry args={[0.22, 28, 28]} />
-          <meshBasicMaterial color="#fdba74" />
+          <meshBasicMaterial color="#cfcfcf" />
         </mesh>
       </Float>
     </group>
@@ -328,13 +319,13 @@ function EndingScene() {
 
   return (
     <group>
-      <Stars radius={28} depth={45} count={4500} factor={3.4} saturation={0.1} fade speed={0.55} />
-      <Sparkles count={280} scale={10} size={2.3} speed={0.34} color="#ffffff" />
-      <Line points={web} color="#93c5fd" lineWidth={1.5} transparent opacity={0.35} />
-      <Line points={webTwo} color="#d8b4fe" lineWidth={1.5} transparent opacity={0.3} />
+      <Stars radius={28} depth={45} count={4500} factor={3.4} saturation={0} fade speed={0.55} />
+      <Sparkles count={280} scale={10} size={2.3} speed={0.34} color="#f5f5f5" />
+      <Line points={web} color="#d4d4d4" lineWidth={1.5} transparent opacity={0.24} />
+      <Line points={webTwo} color="#a3a3a3" lineWidth={1.5} transparent opacity={0.2} />
       <mesh>
         <sphereGeometry args={[0.3, 24, 24]} />
-        <meshBasicMaterial color="#ffffff" transparent opacity={0.8} />
+        <meshBasicMaterial color="#f5f5f5" transparent opacity={0.6} />
       </mesh>
     </group>
   );
@@ -346,15 +337,15 @@ export default function CosmicCanvas({ scene }) {
 
   return (
     <Canvas dpr={[1, 1.75]} camera={{ position: [0, 0, 8], fov: 50 }} gl={{ antialias: true, alpha: true }}>
-      <color attach="background" args={['#020205']} />
-      <fog attach="fog" args={['#020205', 7, 24]} />
+      <color attach="background" args={['#000000']} />
+      <fog attach="fog" args={['#000000', 7, 24]} />
       <ambientLight intensity={0.8} />
-      <directionalLight position={[4, 5, 6]} intensity={1.2} color={sceneColor} />
-      <pointLight position={[-4, -2, 4]} intensity={0.9} color="#8b5cf6" />
+      <directionalLight position={[4, 5, 6]} intensity={0.9} color="#ffffff" />
+      <pointLight position={[-4, -2, 4]} intensity={0.35} color="#ffffff" />
       <CameraRig sceneKey={key} />
       <group>
-        <Stars radius={25} depth={48} count={3000} factor={3.2} saturation={0.15} fade speed={0.6} />
-        <Sparkles count={80} scale={14} size={2.3} speed={0.2} color="#ffffff" />
+        <Stars radius={25} depth={48} count={3000} factor={3.2} saturation={0} fade speed={0.6} />
+        <Sparkles count={80} scale={14} size={2.3} speed={0.2} color="#f5f5f5" />
         {key === 'bang' && <BigBangScene />}
         {key === 'expansion' && <ExpansionScene />}
         {(key === 'cmb' || key === 'patterns' || key === 'detected') && <CmbSphere tone={key} />}

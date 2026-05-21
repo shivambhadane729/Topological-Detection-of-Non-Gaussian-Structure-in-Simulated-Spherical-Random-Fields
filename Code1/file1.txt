@@ -1,0 +1,128 @@
+﻿Med Sem Member Work Distribution 
+Key Assumptions for 50% MVP: 
+
+●​ Use sample data only (pre-loaded Planck patches; no custom CAMB sims yet). 
+●​ Compute limited to single patches (no parallel/HPC). 
+●​ No user auth (guest mode only; add in phase 2). 
+●​ Deployment: Local dev + basic Vercel for frontend demo. 
+●​ Success Metrics: End-to-end workflow runs in <10 mins; basic interactive viz works in 
+
+browser; GitHub repo with docs. 
+
+MVP Features and Implementations 
+ 
+
+Feature Category Specific Features Implementation Details 
+
+Frontend Setup & - Landing page with demo button. - - Next.js/React app. - Tailwind CSS for styling 
+UI Simple dashboard: Upload form, (dark astro theme). - Plotly.js for basic 
+
+config sliders (e.g., scale=1, interactive scatter (zoom/pan on diagrams). - 
+mask=galactic). - Interactive viz File upload via drag-drop (react-dropzone). 
+panel: Display CMB map preview, 
+persistence diagram scatter plot. 
+
+Backend API - API endpoints: /upload (handle - FastAPI (Python) server. - Pydantic for input 
+FITS), /preprocess (mask/filter), validation (e.g., file type check). - Celery + 
+/compute-tda (run homology), Redis for simple queue (local only). - CORS 
+
+setup for frontend integration. 
+/results (fetch viz data). - Job 
+queuing for async compute (no 
+real-time yet). 
+
+Data Handling & - Load/sample FITS maps. - Basic - Healpy/Astropy: hp.read_map() for load, 
+Preprocessing masking (galactic plane via hp.masked_map() for masking. - PyNeedlet 
+
+healpy). - Single-scale needlet filter or simple scipy wavelet (e.g., 
+(simplified wavelet). scipy.signal.cwt). - Output: NumPy array 
+
+for TDA input. 
+
+
+
+ 
+
+Core TDA - Compute H₀ persistence diagram - Scikit-tda/Ripser: 
+Computation for 2D map patch. - Extract basic ripser.VietorisRipsPersistence() on 
+
+summary: Betti curve (number of point cloud from map pixels. - Persim: Basic 
+components over scale). persistence diagram to Betti (e.g., 
+
+plot_diagrams()). - Limit to 1000x1000 
+pixel patches for speed. 
+
+Visualization & - Render: CMB heatmap, - Backend generates plots via Matplotlib/Plotly 
+Export persistence scatter. - Export: (JSON for frontend). - Frontend: Embed Plotly 
+
+Download PNG plots + CSV (Betti charts. - Simple ZIP export via JSZip library. 
+values). 
+
+Integration & - End-to-end workflow: Upload → - GitHub repo with branches (feat/frontend, 
+Testing Preprocess → Compute → feat/backend). - Unit tests: Pytest for backend 
+
+Viz/Export. - Basic error handling (e.g., mock FITS), Jest for frontend. - Docker 
+(e.g., invalid file). - Docs: README compose for local stack (FastAPI + Redis). 
++ 1 tutorial Jupyter notebook. 
+
+Deployment & - Local run script. - Basic Vercel - Vercel CLI for frontend. - Environment vars 
+Demo deploy for frontend (static, API for API URL. - Demo video/script for EDI 
+
+proxy to local backend). presentation. 
+ 
+
+Task Division 
+
+Member 1: Frontend & Integration Focus 
+●​ Set up Next.js project skeleton (pages: landing, dashboard, viz). 
+●​ Implement upload form and config UI (sliders for scale/mask). 
+●​ Integrate Plotly for interactive viz (scatter for persistence, heatmap for map). 
+●​ Handle export (JSZip for downloads). 
+●​ Integration Role: Merge backend APIs (test endpoints via Axios); run end-to-end tests; 
+
+manage GitHub repo/docs. 
+●​ Milestones: Week 1: Basic UI wireframe. Week 2: Viz prototypes. Week 3: Connect to 
+
+backend mocks. 
+●​ Skills Needed: React/Next.js (freeCodeCamp tutorial if needed); basic API calls. 
+
+Member 2: Backend & API Focus 
+●​ Set up FastAPI server with endpoints (/upload, /preprocess, /compute-tda, /results). 
+●​ Implement job queuing (Celery basics for async TDA calls). 
+●​ Add file validation and error responses (e.g., JSON errors). 
+
+
+
+ 
+
+●​ Integration Role: Expose JSON data for frontend (e.g., diagram points as arrays); 
+collaborate on Docker setup. 
+
+●​ Milestones: Week 1: API skeleton + tests. Week 2: Queue integration. Week 3: Deploy 
+local server. 
+
+●​ Skills Needed: Python/FastAPI (FastAPI docs + YouTube); Celery intro. 
+
+Member 3: Data & TDA Compute Focus 
+●​ Implement data loading/preprocessing (healpy masking, simple wavelet filter). 
+●​ Core TDA: Ripser for H₀ diagrams, basic Betti extraction. 
+●​ Generate sample outputs (e.g., mock diagrams for testing). 
+●​ Integration Role: Hook into backend endpoints; provide JSON-serializable results (e.g., 
+
+Betti curve data). 
+●​ Milestones: Week 1: Preprocess function + tests on sample FITS. Week 2: TDA compute 
+
+pipeline. Week 3: Optimize for <5 min runtime. 
+●​ Skills Needed: Astropy/healpy (ESA Planck docs); scikit-tda (official tutorials). 
+
+Member 4: Viz/Export & Testing Focus 
+●​ Backend plot generation (Matplotlib to PNG/JSON for Plotly). 
+●​ Frontend viz embedding and interactions (e.g., click diagram points for info). 
+●​ Export logic (CSV for Betti, PNG zips). 
+●​ Integration Role: Lead testing (Pytest/Jest); demo scripting; basic deployment to Vercel. 
+●​ Milestones: Week 1: Plot prototypes. Week 2: Export features. Week 3: Full tests + 
+
+demo video. 
+●​ Skills Needed: Plotly/Matplotlib (Plotly docs); testing basics (free tools like Postman for 
+
+APIs).

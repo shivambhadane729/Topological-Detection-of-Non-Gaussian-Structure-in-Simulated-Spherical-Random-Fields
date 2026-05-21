@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+.pytest_cache/
+
+# Next.js
+.next/
+out/
+node_modules/
+
+# Mac
+.DS_Store
+
+# Datasets and Uploads
+uploads/
+dataset/raw/
+*.fits
+*.npy
+*.npz
+
+dataset/outputs/*
+!dataset/outputs/.gitkeep
+
+# IDEs
+.vscode/
+.idea/
+*.swp

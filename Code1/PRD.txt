@@ -1,0 +1,229 @@
+﻿PRD 
+Vision Statement 
+CosmoPH is an interactive, web-based platform that brings cutting-edge topological data analysis (TDA) 
+to cosmology research, enabling users to upload, process, and visualize Cosmic Microwave Background 
+(CMB) maps for detecting primordial non-Gaussianities. Built around persistent homology, the platform 
+democratizes access to advanced TDA tools—previously limited to command-line experts—by offering a 
+user-friendly web interface, real-time visualizations of persistence diagrams and topological features, and 
+automated inflation model classification. Integrated with public datasets (e.g., Planck PR4) and simulation 
+generators, CosmoPH empowers researchers, students, and theorists to explore subtle early-universe 
+signatures orders of magnitude fainter than traditional methods detect, fostering open, reproducible 
+cosmology and bridging algebraic topology with fundamental physics insights. 
+
+Goals 
+Launch a functional, public-facing MVP website that demonstrates originality in web-delivered TDA for 
+CMB analysis. Achieve EDI project success: ≥85% classification accuracy on simulations, interactive 
+processing of sample/full-sky patches, GitHub-linked backend code, and a live demo showcasing 
+topological non-Gaussianity estimators (tNG). Target academic impact: Enable non-expert users (e.g., 
+undergrads) to run analyses via browser, with exportable results for papers, aligning with interdisciplinary 
+education and research promotion. 
+
+Problem Statement 
+Detecting subtle non-Gaussian patterns in Cosmic Microwave Background radiation that encode 
+information about early-universe physics but are too faint for current statistical methods to reliably detect. 
+Planck satellite data shows CMB is nearly Gaussian, but theoretically predicted non-Gaussianities exist at 
+levels below current detection limits (f_NL < 5). This challenge is real and ongoing for ~100+ cosmology 
+research groups worldwide, who rely on command-line tools that require deep expertise in Python, TDA 
+libraries, and HPC. Existing solutions (bispectrum, Minkowski functionals) assume templates, miss 
+complex topologies, and lack accessibility—creating a gap for an intuitive, web-accessible, 
+model-agnostic platform that delivers topological insights with geometric interpretability and lower 
+barriers to entry. 
+CosmoPH solves this by transforming the offline pipeline into a scalable web application: users upload 
+maps or select public datasets, trigger persistent homology computations, view interactive results, and 
+obtain tNG statistics + inflation classifications—all without local setup or advanced coding. 
+
+
+
+Target Users and Personas 
+
+Cosmology Students & Early-Career Researchers 
+Persona: An MSc/PhD student exploring inflation models for coursework or thesis. 
+Pain Points: No easy way to experiment with TDA; installing healpy/scikit-tda/HPC access is daunting; 
+results hard to visualize/share. 
+Needs: Browser-based upload/run/visualize; guided tutorials; export plots/reports. 
+Value Prop: Run full analyses in minutes via web; interactive persistence diagrams reveal hidden 
+non-Gaussian features; classify models with confidence scores. 
+Frequency: Weekly exploratory runs during research/learning. 
+
+Academic Researchers & Postdocs 
+Persona: A postdoc testing multi-field inflation simulations against Planck data. 
+Pain Points: Time-consuming local pipeline setup; collaboration requires sharing code/results; limited 
+visualization tools for topology. 
+Needs: Secure upload of custom maps/sims; batch processing; shareable links to results; API for 
+integration. 
+Value Prop: Web dashboard for quick topological feature extraction; tNG estimators complement 
+bispectrum; collaborative sharing boosts productivity. 
+Frequency: Daily/weekly during analysis phases. 
+
+CMB Experiment Teams & Educators 
+Persona: A lecturer teaching cosmology or a Simons Observatory data scientist. 
+Pain Points: Hard to demonstrate TDA concepts interactively in class; students lack compute resources. 
+Needs: Public demo mode with sample datasets; educational explanations/tooltips; export for lectures. 
+Value Prop: Live web demos of topology vs. Gaussian null; constraints on f_NL visualized; open 
+platform for community contributions. 
+Frequency: Monthly teaching or pipeline validation. 
+
+Functional Requirements 
+
+User Authentication & Dashboard 
+Secure login (email/OAuth); personalized dashboard for saved projects, recent runs, and shared analyses. 
+
+Data Upload & Selection 
+Upload HEALPix FITS maps (Planck PR4 subsets, custom sims); select from pre-loaded public datasets 
+or generate simple CAMB-like sims via web form. 
+
+
+
+Preprocessing Interface 
+Interactive masking (galactic plane/point sources); needlet/wavelet scale selection via sliders; preview 
+masked map. 
+
+Persistent Homology & Feature Computation 
+Trigger backend TDA (ripser/gudhi) on selected scales/patches; compute persistence diagrams (H₀, H₁), 
+Betti curves, persistence images, Wasserstein distances. 
+
+Visualization Engine 
+Interactive plots: Heatmap CMB maps, persistence diagrams (scatter + birth-death), Betti curves, 
+persistence images; compare real vs. Gaussian simulations. 
+
+tNG Estimators & ML Classification 
+Compute topological non-Gaussianity stats (tNG₁, tNG₂, tNG₃); run pre-trained RF/SVM for inflation 
+model classification (single-field/multi-field/non-Bunch-Davies); display probabilities + f_NL 
+constraints. 
+
+Results Export & Sharing 
+Download diagrams/features/reports (PDF/CSV/PKL); generate shareable project links; export LaTeX 
+snippets for papers. 
+
+Validation & Comparison 
+Null-test mode (Gaussian injections); side-by-side bispectrum comparison (if integrated); sensitivity 
+metrics (e.g., detect f_NL=2 at 3σ). 
+
+User Stories 
+●​ As a student, I want to upload a Planck patch and see an interactive persistence diagram, so I 
+
+understand topological deviations from Gaussianity. 
+●​ As a researcher, I want to run classification on my simulation set and get f_NL bounds, so I can 
+
+compare with theory predictions. 
+●​ As an educator, I want a demo mode with guided steps and explanations, so I can teach TDA in 
+
+cosmology without setup. 
+●​ As any user, I want to share a results link, so collaborators can view/interact without accounts. 
+
+
+
+Non-Functional Requirements 
+●​ Performance: Single-patch analysis <5 mins; full demo map <30 mins (backend queuing/HPC); 
+
+web responsive on desktop/mobile. 
+●​ Security: HTTPS; file size limits (e.g., <500MB uploads); no persistent storage of sensitive data; 
+
+rate limiting. 
+●​ Usability: Intuitive UI (React/Next.js); tooltips for TDA concepts; dark mode; mobile-friendly 
+
+dashboard. 
+●​ Scalability: Cloud backend (e.g., AWS/GCP) with job queue (Celery/RabbitMQ); containerized 
+
+compute (Docker); handle 50+ concurrent users. 
+●​ Accessibility: WCAG-compliant; open-source frontend/backend (MIT); comprehensive 
+
+docs/API. 
+
+ User Workflows 
+
+Student/Researcher Workflow: Analyzing a CMB Map 
+
+1.​ Onboarding (2 mins) 
+Sign up/login; land on dashboard. 
+Edge: Guest mode for quick demos. 
+
+2.​ Data Input (3 mins) 
+Upload FITS or select sample (e.g., Planck Commander patch); configure scales/masks via UI sliders. 
+Edge: Large file → Async upload + progress bar. 
+
+3.​ Run Analysis (5-30 mins) 
+Click "Compute Topology"; backend processes → notifications via email/websocket. 
+Edge: Queue if busy → Status page. 
+
+4.​ Explore Results (Ongoing) 
+Interactive viewer: Zoom persistence diagram, toggle Betti curves, compare tNG vs. null. 
+Run classification → See model probabilities + f_NL plot. 
+
+5.​ Export/Share (1 min) 
+Download ZIP (plots/data); generate share link; export report. 
+
+Educator Workflow: Classroom Demo 
+1.​ Open public demo page; select pre-loaded Gaussian vs. non-Gaussian map. 
+
+
+
+2.​ Step-by-step guide: Preprocess → Compute → Visualize anomalies. 
+3.​ Export screenshot/PDF for slides. 
+
+Technical Specifications 
+
+Architecture 
+Frontend: Next.js/React + Tailwind; Wagmi? (if wallet/auth needed, but likely not); Plotly.js/D3 for 
+interactive viz. 
+Backend: FastAPI/Python; job queue for long computations; integrate healpy, scikit-tda, persim, 
+scikit-learn. 
+Compute Layer: Docker containers; optional HPC offload for full-sky; cloud storage for results 
+(S3-compatible). 
+Database: PostgreSQL for users/projects; Redis for caching/queues. 
+Deployment: Vercel/Netlify frontend; Render/Fly.io or AWS for backend. 
+
+Data Flow Diagram (Text-Based) 
+User (Browser) → Frontend (Next.js: Upload/Config) → API (FastAPI: Validate/Queue Job) 
+  ↓ → Compute Worker (Docker: Preprocess → TDA → Features → ML) 
+  ↓ (Store Results) → Database/Storage (Persistence Diagrams/Images/Reports) 
+  ↓ (Notify) → WebSocket/Dashboard → Interactive Viz (Plotly) 
+Output: Shareable URL + Downloads 
+
+Integrations 
+ 
+
+Integration Purpose MVP Status 
+
+Healpy/Astropy Map handling Required 
+
+Scikit-tda/Persim Persistent homology Core 
+
+Scikit-learn Classification Required 
+
+Plotly.js Interactive visualizations Core 
+
+FastAPI Backend API Required 
+
+Next.js Frontend framework Required 
+
+
+
+Design and UI/UX Guidelines 
+Modern Astro Theme: Dark background, nebula accents; clean sans-serif fonts. 
+Dashboard: Sidebar navigation (Projects, Upload, Demo, Docs); central interactive canvas for 
+maps/diagrams. 
+Visuals: Clickable persistence points linking to birth/death explanations; color-coded tNG alerts (e.g., red 
+for significant deviation). 
+Documentation: In-app tooltips + dedicated /docs page with tutorials (e.g., "What is a persistence 
+diagram?"). 
+
+Risks and Mitigations 
+ 
+
+Risk Likelihood Impact Mitigation 
+
+High backend High High Limit uploads to patches; queue + timeouts; start 
+compute costs/times with samples. 
+
+Web security (uploads, Medium High Validate files; sandbox compute; use auth libraries. 
+auth) 
+
+Team skill gaps High High 4 members: divide (2 frontend/UI, 1 backend/TDA, 
+(full-stack + TDA) 1 astro/integration); learn via MOOCs. 
+
+Low adoption (niche Medium Medium Public demo + GitHub; target cosmology 
+tool) forums/Reddit. 
+
+Scope creep (full-sky High Medium MVP: Patch + samples only; phase 2 for advanced. 
+real-time)

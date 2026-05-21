@@ -1,0 +1,87 @@
+# Product Requirements Document (PRD)
+
+## 1. Product Name
+**CosmoPH** (Topological Data Analysis for Cosmic Microwave Background Maps)
+
+## 2. Product Overview
+CosmoPH is an interactive, web-based platform designed to bring cutting-edge Topological Data Analysis (TDA) to cosmology research. It enables researchers to upload, process, and visualize Cosmic Microwave Background (CMB) maps to detect primordial non-Gaussianities using persistent homology.
+
+## 3. Target Audience
+- **Cosmologists & Astrophysicists**: Researchers studying the early universe, specifically inflation theories and CMB anomalies.
+- **Data Scientists in Astronomy**: Professionals needing accessible tools for applying complex topological algorithms to astronomical datasets.
+- **Students & Academics**: Individuals learning or teaching advanced data analysis techniques applied to cosmological models.
+
+## 4. Problem Statement
+**The Challenge**: Detecting primordial non-Gaussianities in Cosmic Microwave Background (CMB) maps is critical for understanding the early universe and inflation theories.
+**Current Limitations**: Conventional statistical methods (like power spectrum analysis) often miss complex structural and geometric features in the data. Furthermore, while Topological Data Analysis (TDA) is highly effective for structural analysis, existing TDA tools are highly technical, lack interactive visualizations, require complex local environment setups, and are not easily accessible for rapid hypothesis testing.
+
+## 5. Product Goals & Objectives
+- **Accessibility**: Provide a user-friendly web interface that abstracts away the complex setup of TDA and astronomical data processing libraries.
+- **Interactivity**: Offer dynamic visualizations (Persistence Diagrams, Betti Curves) that allow users to interact with and understand the topological features of their data.
+- **Efficiency**: Streamline the workflow from raw FITS file ingestion to final statistical comparison and export.
+- **Reproducibility**: Ensure that analysis pipelines are reproducible and can be easily shared or downloaded as complete result bundles.
+
+## 6. Key Features & Requirements
+
+### 6.1 Core Features (MVP)
+- **Dataset Management**:
+  - Drag-and-drop upload for FITS files.
+  - Selection mechanism for pre-loaded Planck samples or auto-generated demo data (Gaussian vs. Non-Gaussian).
+- **Interactive Preprocessing Module**:
+  - Apply customizable masking.
+  - Extract specific 2D patches (e.g., 64x64).
+  - Normalize data limits and apply wavelet filtering if necessary.
+- **TDA Computation Engine**:
+  - Compute H₀ (connected components) and H₁ (loops/holes) topological features.
+  - Generate Persistence Diagrams.
+  - Track feature counts across filtration scales to generate Betti Curves.
+  - Vectorize topological summaries into Persistence Images.
+- **Statistical Comparison**:
+  - Calculate Wasserstein distance against a Gaussian null hypothesis to measure deviations.
+- **Export & Results**:
+  - Downloadable ZIP bundles containing PNG plots, CSV data, and JSON results.
+- **One-Click Demo**:
+  - A frictionless demo mode that runs the full pipeline with synthetic data without requiring manual uploads.
+
+### 6.2 Future Roadmap (Post-MVP)
+- Implement tNG estimators (tNG₁, tNG₂, tNG₃).
+- Train an ML classifier on labeled simulations for automated model classification.
+- Visualize f_NL constraints.
+- Full-sky HEALPix support with High-Performance Computing (HPC) offloading.
+- Implement user authentication (OAuth) for personalized workspaces.
+- Batch processing and multi-dataset comparison modes.
+- Automated LaTeX report generation.
+- CAMB simulation generator configurable via web form.
+- Production-grade queue system (Celery + Redis) and cloud deployment (AWS/GCP).
+
+## 7. System Architecture & Tech Stack
+
+### 7.1 Architecture
+The system follows a modern client-server architecture with separation of concerns:
+- **Client (Frontend)**: Handles UI, user interactions, data upload, and dynamic visualizations. Communicates with backend via REST APIs.
+- **Server (Backend)**: Manages API routes, business logic, asynchronous task processing, and coordinates scientific computations.
+- **Services (Processing Engine)**: Specialized Python modules for astronomical data manipulation and TDA math.
+
+### 7.2 Technology Stack
+- **Frontend**: Next.js 15, React, Tailwind CSS, Plotly.js (for interactive charts).
+- **Backend**: FastAPI, Pydantic, Uvicorn (Python 3.10+).
+- **TDA Processing**: Ripser, Persim, scikit-tda.
+- **Astronomy Libraries**: Healpy, Astropy.
+- **Machine Learning**: scikit-learn (scaffolding for future features).
+- **Infrastructure & Deployment**: Docker, Docker Compose.
+- **Testing**: Pytest (Backend).
+
+## 8. End-to-End Workflow / User Journey
+1. **Select/Upload**: User chooses a sample dataset or uploads a custom FITS file.
+2. **Configure**: User sets parameters such as mask type, patch size, scale, and normalization.
+3. **Preprocess**: System extracts and cleans a 2D CMB patch based on configurations.
+4. **TDA Compute**: System runs persistent homology calculations using Ripser.
+5. **Visualize**: Frontend renders interactive persistence diagrams, Betti curves, and persistence images.
+6. **Compare**: System calculates and displays the Wasserstein distance against a Gaussian null hypothesis.
+7. **Export**: User downloads a ZIP bundle summarizing all findings.
+
+## 9. Non-Functional Requirements
+- **Performance**: The backend must handle intensive TDA computations asynchronously to prevent API blocking. Containerized deployment ensures consistent performance across environments.
+- **Usability**: The frontend must be responsive and intuitive, requiring minimal onboarding for researchers familiar with basic CMB concepts.
+- **Scalability**: The architecture must be designed to eventually support integration with task queues (e.g., Celery) for horizontal scaling of processing nodes to handle full-sky maps.
+- **Security**: Basic input validation on FITS uploads to prevent malicious file execution. Future iterations will require full authentication.
