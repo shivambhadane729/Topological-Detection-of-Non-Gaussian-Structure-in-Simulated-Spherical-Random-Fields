@@ -94,6 +94,28 @@ const scenes = [
   },
 ];
 
+function scenePlaceholderSVG(title, index) {
+  const colors = ["#071224","#0b1930","#12202b","#071a52","#08131f","#092038","#071a52","#0b1930","#071224"];
+  const color = colors[index % colors.length];
+  const svg = `
+    <svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
+      <defs>
+        <linearGradient id='g' x1='0' x2='1'>
+          <stop offset='0' stop-color='${color}' stop-opacity='1'/>
+          <stop offset='1' stop-color='#000000' stop-opacity='0.25'/>
+        </linearGradient>
+      </defs>
+      <rect width='100%' height='100%' fill='url(#g)' />
+      <g fill='rgba(255,255,255,0.06)'>
+        <rect x='80' y='60' width='420' height='280' rx='28' />
+        <circle cx='980' cy='640' r='220' />
+      </g>
+      <text x='60' y='720' font-family='Inter, Roboto, sans-serif' font-size='48' fill='rgba(255,255,255,0.9)'>${title}</text>
+    </svg>
+  `;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+}
+
 function SceneBadge({ active, index }) {
   return (
     <div className={`flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] ${active ? 'text-white' : 'text-white/40'}`}>
@@ -113,29 +135,18 @@ function ScenePanel({ scene, active }) {
       className="glass-panel-strong story-shadow relative overflow-hidden rounded-[2rem] p-6 md:p-8"
     >
       <div className={`absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.08),transparent_28%),linear-gradient(135deg,rgba(255,255,255,0.02),transparent_32%)]`} />
-      <div className="relative">
-        <SceneBadge active={active} index={scene.index} />
-        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/70 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.35em] text-white/60 backdrop-blur-md">
-          <Sparkles size={12} /> {scene.label}
-        </div>
-        <h2 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
-          {scene.title}
-        </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/72 md:text-lg">
-          {scene.subtitle}
-        </p>
-        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-white/62 md:text-base">
-          {scene.copy}
-        </p>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-black/80 px-4 py-4 text-sm text-white/70 backdrop-blur-md">
-            {scene.detail}
+        <div className="relative">
+          <SceneBadge active={active} index={scene.index} />
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/70 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.35em] text-white/60 backdrop-blur-md">
+            <Sparkles size={12} /> {scene.label}
           </div>
-          <div className="rounded-2xl border border-white/10 bg-black/60 px-4 py-4 text-sm text-white/70 backdrop-blur-md">
-            Cinematic motion + scientific UI + immersive cosmic imagery.
-          </div>
+          <h2 className="mt-5 max-w-3xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
+            {scene.title}
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/72 md:text-lg">
+            {scene.subtitle}
+          </p>
         </div>
-      </div>
     </motion.div>
   );
 }
@@ -224,9 +235,12 @@ export default function TimelineExperience() {
           {sceneData.map((scene, index) => (
             <section key={scene.title} data-scene className="min-h-screen py-6 md:py-10">
               <div className="grid items-center gap-8 lg:grid-cols-[1.25fr_0.75fr]">
-                <ScenePanel key={scene.title} scene={scene} active={index === activeIndex} />
 
-                <div className="hidden min-h-[34rem] rounded-[2rem] border border-dashed border-white/8 bg-black/35 lg:block" aria-hidden="true" />
+                    <ScenePanel key={scene.title} scene={scene} active={index === activeIndex} />
+
+                    <div className="hidden min-h-[34rem] rounded-[2rem] border border-dashed border-white/8 bg-black/35 lg:block overflow-hidden" aria-hidden="true">
+                      <img src={scene.image || scenePlaceholderSVG(scene.title, index)} alt={scene.title} className="h-full w-full object-cover" />
+                    </div>
 
                 <AnimatePresence mode="wait">
                   <div />

@@ -81,6 +81,27 @@ const scenes = [
   },
 ];
 
+function scenePlaceholderSVG(title, index) {
+  const colors = ["#0f172a","#001219","#1f2937","#071a52","#0f172a","#0b2545","#071a52","#001219","#0f172a"];
+  const color = colors[index % colors.length];
+  const svg = `
+    <svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
+      <defs>
+        <linearGradient id='g' x1='0' x2='1'>
+          <stop offset='0' stop-color='${color}' stop-opacity='1'/>
+          <stop offset='1' stop-color='#000000' stop-opacity='0.2'/>
+        </linearGradient>
+      </defs>
+      <rect width='100%' height='100%' fill='url(#g)' />
+      <g fill='rgba(255,255,255,0.06)'>
+        <circle cx='200' cy='120' r='180' />
+        <circle cx='980' cy='640' r='260' />
+      </g>
+      <text x='60' y='720' font-family='Inter, Roboto, sans-serif' font-size='48' fill='rgba(255,255,255,0.9)'>${title}</text>
+    </svg>
+  `;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+}
 const SceneIcon = ({ kind }) => {
   switch (kind) {
     case 'bang':
@@ -201,10 +222,9 @@ function TimelineCard({ scene }) {
         <span>{scene.number}</span>
         <span className="timeline-card-label"><SceneIcon kind={scene.kind} /> {scene.title}</span>
       </div>
-
       <div className="relative overflow-hidden rounded-[2rem] border border-outline bg-black shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_30px_90px_rgba(0,0,0,0.6)]">
-        <SceneVisual kind={scene.kind} />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0.12),transparent_30%),linear-gradient(to_bottom,rgba(0,0,0,0.15),rgba(0,0,0,0.7))]" />
+        <img src={scene.image || scenePlaceholderSVG(scene.title, Number(scene.number) - 1)} alt={scene.title} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]" />
         <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
           <div className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-[10px] uppercase tracking-[0.4em] text-on-surface-variant backdrop-blur-md`}>
             <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" /> Scene {scene.number}
