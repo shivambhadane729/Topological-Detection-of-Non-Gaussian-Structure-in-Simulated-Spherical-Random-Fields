@@ -35,6 +35,7 @@ export default function Dashboard() {
   const [datasets, setDatasets] = useState([]);
   const [loadingDatasets, setLoadingDatasets] = useState(true);
   const [selectedDataset, setSelectedDataset] = useState(null);
+  const [showControls, setShowControls] = useState(false);
   const [preprocessConfig, setPreprocessConfig] = useState({
     apply_mask: true,
     mask_type: 'galactic',
@@ -149,6 +150,7 @@ export default function Dashboard() {
       setJobStatus('preprocessing');
       setJobMessage('Running Demo Pipeline...');
       setJobProgress(20);
+      setShowControls(false);
       const res = await api.runDemo();
       await pollJob(res.job_id, 'demo');
     } catch (err) {
@@ -165,6 +167,7 @@ export default function Dashboard() {
       setJobStatus('preprocessing');
       setJobMessage('Aligning cosmic signals...');
       setJobProgress(10);
+      setShowControls(false);
       const preprocessResponse = await api.preprocess(selectedDataset.id, preprocessConfig);
       await pollJob(preprocessResponse.job_id, 'preprocessing');
       setJobProgress(50);
@@ -395,6 +398,7 @@ export default function Dashboard() {
 
   const sampleDatasets = datasets.filter((dataset) => dataset.category === 'sample');
   const otherDatasets = datasets.filter((dataset) => dataset.category !== 'sample');
+  const controlsPanelWidth = showControls ? 'xl:w-[280px]' : 'xl:w-[88px]';
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col font-sans selection:bg-white/20 selection:text-black">
@@ -402,242 +406,121 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 bg-black">
         {/* Dashboard Content */}
-        <div className="p-6 md:p-8 max-w-7xl mx-auto w-full flex flex-col gap-5">
+        <div className="p-4 md:p-6 max-w-[1600px] mx-auto w-full flex flex-col gap-4">
           
           {/* Analysis View */}
           {['explore', 'compute', 'results'].includes(activeTab) && (
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
+            <div className={`grid grid-cols-1 xl:grid-cols-[minmax(0,${showControls ? '280px' : '88px'})_minmax(0,1fr)] gap-4`}>
               
               {/* Controls Column */}
-              <div className="xl:col-span-1 flex flex-col gap-5">
-                <Card title="Data Source" icon={Database} className="border border-outline shadow-sm overflow-hidden">
-                  <div className="mb-4 pb-4 border-b border-outline">
-                    <label className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-black border border-white/10 border-dashed rounded-md text-sm font-medium text-white hover:bg-white/5 cursor-pointer transition-colors">
-                      <Upload size={16} className="text-accent" />
-                      Upload Map (FITS)
-                      <input type="file" className="hidden" accept=".fits,.fit,.npy,.npz" onChange={handleFileUpload} />
-                    </label>
-                  </div>
-                  
-                  <div className="space-y-5">
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Sample Datasets</h4>
-                        <span className="text-[10px] text-on-surface-variant">{sampleDatasets.length} available</span>
+              <div className={showControls ? 'xl:col-span-1 flex flex-col gap-3' : 'xl:col-span-1 flex flex-col gap-2'}>
+                <button
+                  onClick={() => setShowControls((current) => !current)}
+                  className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-left text-white hover:bg-white/5 transition-colors"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <Database size={15} className="text-white/70" />
+                      <div>
+                        <div className="text-sm font-semibold leading-tight">Data</div>
+                        <div className="text-[11px] text-white/50 leading-tight">{selectedDataset?.name || 'collapsed'}</div>
                       </div>
-                      <div className="space-y-3">
+                    </div>
+                    <span className="text-[11px] text-white/55">{showControls ? 'Hide' : 'Open'}</span>
+                  </div>
+                </button>
+
+                {showControls && (
+                  <>
+                    <Card title="Dataset" icon={Database} className="border border-white/10 overflow-hidden">
+                      <div className="space-y-2">
+                        <label className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-black border border-white/10 border-dashed rounded-md text-sm font-medium text-white hover:bg-white/5 cursor-pointer transition-colors">
+                          <Upload size={15} className="text-accent" />
+                          Upload Map (FITS)
+                          <input type="file" className="hidden" accept=".fits,.fit,.npy,.npz" onChange={handleFileUpload} />
+                        </label>
+                        <div className="text-[11px] text-white/45">Select a sample dataset below. The panel will minimize after you run analysis.</div>
+                      </div>
+                    </Card>
+
+                    <Card title="Samples" icon={FileText} className="border border-white/10 overflow-hidden">
+                      <div className="space-y-2 max-h-[220px] overflow-y-auto pr-1">
                         {loadingDatasets ? (
-                          <div className="flex justify-center py-6"><Loader2 className="animate-spin text-accent" /></div>
+                          <div className="flex justify-center py-4"><Loader2 className="animate-spin text-accent" /></div>
                         ) : sampleDatasets.length > 0 ? (
                           sampleDatasets.map((ds) => (
                             <button
                               key={ds.id}
                               onClick={() => setSelectedDataset(ds)}
-                              className={`w-full text-left p-4 rounded-md border transition-colors ${
+                              className={`w-full text-left p-2.5 rounded-md border transition-colors ${
                                 selectedDataset?.id === ds.id
                                   ? 'bg-white/5 border-white/30 text-white'
                                   : 'bg-black border-white/10 hover:border-white/20 text-white'
                               }`}
                             >
-                              <div className="flex justify-between items-start mb-1">
-                                <div className="font-semibold text-sm truncate pr-2">{ds.name}</div>
-                                <span className="text-[10px] bg-white/5 border border-white/10 text-white/70 px-2 py-0.5 rounded font-medium shrink-0">Sample</span>
+                              <div className="flex justify-between items-start gap-2 mb-1">
+                                <div className="font-semibold text-[13px] truncate pr-2">{ds.name}</div>
+                                <span className="text-[9px] bg-white/5 border border-white/10 text-white/70 px-1.5 py-0.5 rounded font-medium shrink-0">S</span>
                               </div>
-                              <div className="text-xs text-white/65">{ds.description}</div>
-                              <div className="text-xs text-white/45 mt-1">NSIDE {ds.nside || 'n/a'}</div>
+                              <div className="text-[11px] text-white/55 line-clamp-2">{ds.description}</div>
                             </button>
                           ))
                         ) : (
-                          <div className="text-xs text-white/60 py-3 px-4 rounded-md border border-white/10 bg-black">
-                            No sample datasets available.
-                          </div>
+                          <div className="text-[11px] text-white/60 py-2.5 px-3 rounded-md border border-white/10 bg-black">No sample datasets available.</div>
                         )}
                       </div>
-                    </div>
+                    </Card>
 
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Other Datasets</h4>
-                        <span className="text-[10px] text-on-surface-variant">{otherDatasets.length} available</span>
-                      </div>
+                    <Card title="Controls" icon={Cpu} className="border border-white/10 overflow-hidden">
                       <div className="space-y-3">
-                        {loadingDatasets ? (
-                          <div className="flex justify-center py-6"><Loader2 className="animate-spin text-accent" /></div>
-                        ) : otherDatasets.length > 0 ? (
-                          otherDatasets.map((ds) => (
-                            <button
-                              key={ds.id}
-                              onClick={() => setSelectedDataset(ds)}
-                              className={`w-full text-left p-4 rounded-md border transition-colors ${
-                                selectedDataset?.id === ds.id
-                                  ? 'bg-white/5 border-white/30 text-white'
-                                  : 'bg-black border-white/10 hover:border-white/20 text-white'
-                              }`}
-                            >
-                              <div className="flex justify-between items-start mb-1">
-                                <div className="font-semibold text-sm truncate pr-2">{ds.name}</div>
-                                {ds.category === 'sample' && <span className="text-[10px] bg-white/5 border border-white/10 text-white/70 px-2 py-0.5 rounded font-medium shrink-0">Sample</span>}
-                              </div>
-                              <div className="text-xs text-white/65">{ds.description}</div>
-                              <div className="text-xs text-white/45 mt-1">NSIDE {ds.nside || '1024'}</div>
-                            </button>
-                          ))
-                        ) : (
-                          <div className="text-xs text-white/60 py-3 px-4 rounded-md border border-white/10 bg-black">
-                            No datasets available.
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card title="Preprocessing" icon={Upload} className="border border-white/10 overflow-hidden">
-                  <div className="space-y-4 text-sm text-white/75">
-                    <label className="flex items-center justify-between gap-3">
-                      <span>Apply mask</span>
-                      <input type="checkbox" checked={preprocessConfig.apply_mask} onChange={(e) => setPreprocessConfig((current) => ({ ...current, apply_mask: e.target.checked }))} />
-                    </label>
-                    <label className="flex items-center justify-between gap-3">
-                      <span>Normalize</span>
-                      <input type="checkbox" checked={preprocessConfig.normalize} onChange={(e) => setPreprocessConfig((current) => ({ ...current, normalize: e.target.checked }))} />
-                    </label>
-                    <label className="flex items-center justify-between gap-3">
-                      <span>Apply filter</span>
-                      <input type="checkbox" checked={preprocessConfig.apply_filter} onChange={(e) => setPreprocessConfig((current) => ({ ...current, apply_filter: e.target.checked }))} />
-                    </label>
-                    <div className="grid grid-cols-2 gap-3">
-                      <label className="space-y-1">
-                        <span className="block text-xs text-white/50">Mask type</span>
-                        <select className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-white" value={preprocessConfig.mask_type} onChange={(e) => setPreprocessConfig((current) => ({ ...current, mask_type: e.target.value }))}>
-                          <option value="galactic">Galactic</option>
-                          <option value="point_source">Point Source</option>
-                          <option value="custom">Custom</option>
-                        </select>
-                      </label>
-                      <label className="space-y-1">
-                        <span className="block text-xs text-white/50">Patch size</span>
-                        <input className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-white" type="number" min="16" step="1" value={preprocessConfig.patch_size} onChange={(e) => setPreprocessConfig((current) => ({ ...current, patch_size: Number(e.target.value) }))} />
-                      </label>
-                      <label className="space-y-1">
-                        <span className="block text-xs text-white/50">Lon</span>
-                        <input className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-white" type="number" value={preprocessConfig.patch_center_lon} onChange={(e) => setPreprocessConfig((current) => ({ ...current, patch_center_lon: Number(e.target.value) }))} />
-                      </label>
-                      <label className="space-y-1">
-                        <span className="block text-xs text-white/50">Lat</span>
-                        <input className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-white" type="number" value={preprocessConfig.patch_center_lat} onChange={(e) => setPreprocessConfig((current) => ({ ...current, patch_center_lat: Number(e.target.value) }))} />
-                      </label>
-                      <label className="space-y-1">
-                        <span className="block text-xs text-white/50">Filter scale</span>
-                        <input className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-white" type="number" min="0.1" step="0.1" value={preprocessConfig.filter_scale} onChange={(e) => setPreprocessConfig((current) => ({ ...current, filter_scale: Number(e.target.value) }))} />
-                      </label>
-                      <label className="space-y-1">
-                        <span className="block text-xs text-white/50">Target NSIDE</span>
-                        <input className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-white" type="number" min="8" step="8" value={preprocessConfig.target_nside} onChange={(e) => setPreprocessConfig((current) => ({ ...current, target_nside: Number(e.target.value) }))} />
-                      </label>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card title="Execution Engine" icon={Cpu} className="border border-white/10 overflow-hidden">
-                  <div className="space-y-4">
-                    <div className="text-sm text-white/70">
-                      Selected: <span className="font-semibold text-white truncate block mt-1">{selectedDataset?.name || 'None'}</span>
-                    </div>
-                    
-                    {error && (
-                      <div className="p-3 bg-white/5 border border-white/10 text-white text-xs rounded-md break-words">
-                        {error}
-                      </div>
-                    )}
-                    
-                    <button 
-                      disabled={jobStatus === 'preprocessing' || jobStatus === 'computing' || !selectedDataset}
-                      onClick={runAnalysis}
-                      className={`w-full py-2.5 rounded-md flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
-                        jobStatus === 'preprocessing' || jobStatus === 'computing' || !selectedDataset
-                          ? 'bg-black text-white/35 cursor-not-allowed border border-white/10'
-                          : 'bg-white text-black hover:bg-white/90'
-                      }`}
-                    >
-                      {jobStatus === 'idle' || jobStatus === 'completed' || jobStatus === 'error' ? (
-                        <>
-                          <Play size={16} /> Run Analysis
-                        </>
-                      ) : (
-                        <>
-                          <Loader2 size={16} className="animate-spin" /> Processing...
-                        </>
-                      )}
-                    </button>
-
-                    <div className="grid grid-cols-2 gap-3 pt-2 text-sm text-white/75">
-                      <label className="space-y-1">
-                        <span className="block text-xs text-white/50">Max dimension</span>
-                        <input className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-white" type="number" min="0" max="2" value={tdaConfig.max_dimension} onChange={(e) => setTdaConfig((current) => ({ ...current, max_dimension: Number(e.target.value) }))} />
-                      </label>
-                      <label className="space-y-1">
-                        <span className="block text-xs text-white/50">Edge length</span>
-                        <input className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-white" type="number" min="0.1" step="0.1" value={tdaConfig.max_edge_length} onChange={(e) => setTdaConfig((current) => ({ ...current, max_edge_length: Number(e.target.value) }))} />
-                      </label>
-                      <label className="space-y-1">
-                        <span className="block text-xs text-white/50">Max points</span>
-                        <input className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-white" type="number" min="100" step="50" value={tdaConfig.max_points} onChange={(e) => setTdaConfig((current) => ({ ...current, max_points: Number(e.target.value) }))} />
-                      </label>
-                      <label className="space-y-1">
-                        <span className="block text-xs text-white/50">Gaussian samples</span>
-                        <input className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-white" type="number" min="1" step="1" value={tdaConfig.n_gaussian_samples} onChange={(e) => setTdaConfig((current) => ({ ...current, n_gaussian_samples: Number(e.target.value) }))} />
-                      </label>
-                    </div>
-
-                    <div className="space-y-2 pt-1 text-sm text-white/75">
-                      <label className="flex items-center justify-between gap-3">
-                        <span>Compute Betti curves</span>
-                        <input type="checkbox" checked={tdaConfig.compute_betti} onChange={(e) => setTdaConfig((current) => ({ ...current, compute_betti: e.target.checked }))} />
-                      </label>
-                      <label className="flex items-center justify-between gap-3">
-                        <span>Compute persistence image</span>
-                        <input type="checkbox" checked={tdaConfig.compute_persistence_image} onChange={(e) => setTdaConfig((current) => ({ ...current, compute_persistence_image: e.target.checked }))} />
-                      </label>
-                      <label className="flex items-center justify-between gap-3">
-                        <span>Compare Gaussian null</span>
-                        <input type="checkbox" checked={tdaConfig.compare_gaussian} onChange={(e) => setTdaConfig((current) => ({ ...current, compare_gaussian: e.target.checked }))} />
-                      </label>
-                    </div>
-
-                    <button 
-                      disabled={jobStatus === 'preprocessing' || jobStatus === 'computing'}
-                      onClick={runDemo}
-                      className={`w-full py-2.5 rounded-md border border-outline flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
-                        jobStatus === 'preprocessing' || jobStatus === 'computing'
-                          ? 'bg-black text-white/35 cursor-not-allowed border border-white/10'
-                          : 'bg-black text-white border border-white/20 hover:bg-white/5'
-                      }`}
-                    >
-                      Run Preconfigured Demo
-                    </button>
-
-                    {jobStatus !== 'idle' && jobStatus !== 'completed' && jobStatus !== 'error' && (
-                      <div className="mt-4">
-                        <div className="flex justify-between text-xs text-white/60 mb-1">
-                          <span>{jobMessage}</span>
-                          <span>{jobProgress}%</span>
+                        <div className="grid grid-cols-2 gap-2 text-sm text-white/75">
+                          <label className="space-y-1">
+                            <span className="block text-[11px] text-white/50">Patch size</span>
+                            <input className="w-full rounded-md border border-white/10 bg-black px-2.5 py-2 text-white" type="number" min="16" step="1" value={preprocessConfig.patch_size} onChange={(e) => setPreprocessConfig((current) => ({ ...current, patch_size: Number(e.target.value) }))} />
+                          </label>
+                          <label className="space-y-1">
+                            <span className="block text-[11px] text-white/50">Mask type</span>
+                            <select className="w-full rounded-md border border-white/10 bg-black px-2.5 py-2 text-white" value={preprocessConfig.mask_type} onChange={(e) => setPreprocessConfig((current) => ({ ...current, mask_type: e.target.value }))}>
+                              <option value="galactic">Galactic</option>
+                              <option value="point_source">Point Source</option>
+                              <option value="custom">Custom</option>
+                            </select>
+                          </label>
                         </div>
-                        <div className="h-1.5 w-full bg-black rounded-full overflow-hidden border border-white/10">
-                          <div className="h-full bg-accent transition-all duration-300" style={{ width: `${jobProgress}%` }} />
-                        </div>
+                        <button 
+                          disabled={jobStatus === 'preprocessing' || jobStatus === 'computing' || !selectedDataset}
+                          onClick={runAnalysis}
+                          className={`w-full py-2 rounded-md flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
+                            jobStatus === 'preprocessing' || jobStatus === 'computing' || !selectedDataset
+                              ? 'bg-black text-white/35 cursor-not-allowed border border-white/10'
+                              : 'bg-white text-black hover:bg-white/90'
+                          }`}
+                        >
+                          {jobStatus === 'idle' || jobStatus === 'completed' || jobStatus === 'error' ? (<><Play size={16} /> Run Analysis</>) : (<><Loader2 size={16} className="animate-spin" /> Processing...</>)}
+                        </button>
+                        <button 
+                          disabled={jobStatus === 'preprocessing' || jobStatus === 'computing'}
+                          onClick={runDemo}
+                          className={`w-full py-2 rounded-md border border-white/10 flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
+                            jobStatus === 'preprocessing' || jobStatus === 'computing'
+                              ? 'bg-black text-white/35 cursor-not-allowed border border-white/10'
+                              : 'bg-black text-white border border-white/20 hover:bg-white/5'
+                          }`}
+                        >
+                          Run Preconfigured Demo
+                        </button>
                       </div>
-                    )}
-                  </div>
-                </Card>
+                    </Card>
+                  </>
+                )}
               </div>
 
               {/* Visualization Column */}
-              <div className="xl:col-span-2 flex flex-col gap-5">
-                <Card className="flex-1 min-h-[500px] border border-white/10 overflow-hidden" title="Analysis Results" icon={BarChart3}>
+              <div className="xl:col-span-1 flex flex-col gap-4">
+                <Card className="min-h-[680px] border border-white/10 overflow-hidden" title="Analysis Results" icon={BarChart3}>
                   {results ? (
                     <div className="h-full flex flex-col">
-                      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                         <div className="flex flex-wrap gap-2">
                           {[
                             { key: 'diagram', label: 'Diagram' },
@@ -661,18 +544,18 @@ export default function Dashboard() {
                         </div>
                         <button 
                           onClick={handleExport}
-                          className="flex items-center gap-2 px-4 py-2 bg-black border border-white/10 rounded-md text-sm font-medium text-white hover:bg-white/5 transition-colors"
+                          className="flex items-center gap-2 px-3 py-1.5 bg-black border border-white/10 rounded-md text-sm font-medium text-white hover:bg-white/5 transition-colors"
                         >
                           <Download size={16} /> Export Data
                         </button>
                       </div>
-                      <div className="flex-1 min-h-[400px] border border-white/10 rounded-md bg-black">
+                      <div className="flex-1 min-h-[560px] border border-white/10 rounded-md bg-black">
                         {activeResultView === 'diagram' && renderPersistenceDiagram()}
                         {activeResultView === 'betti' && renderBettiCurves()}
                         {activeResultView === 'image' && renderPersistenceImage()}
                         {activeResultView === 'comparison' && renderGaussianComparison()}
                         {activeResultView === 'summary' && (
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 h-full">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 p-3 h-full">
                             {[
                               { label: 'Total features', val: results.summary?.total_features || 0 },
                               { label: 'Max persistence', val: results.summary?.max_persistence?.toFixed?.(4) || results.summary?.max_persistence || 0 },
@@ -687,21 +570,21 @@ export default function Dashboard() {
                           </div>
                         )}
                       </div>
-                      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-white/10 pt-6">
+                      <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3 border-t border-white/10 pt-4">
                         {[
                           { label: 'Topological Features', val: results.persistence_diagram?.length || 0 },
                           { label: 'Classification', val: results.gaussian_comparison?.is_non_gaussian ? 'Non-Gaussian' : 'Gaussian' },
                           { label: 'Predicted Model', val: results.classification?.model_name?.split(' ')[0] || 'Standard' }
                         ].map((stat, i) => (
-                          <div key={i} className="bg-black rounded-md p-4 border border-white/10">
+                          <div key={i} className="bg-black rounded-md p-3 border border-white/10">
                             <div className="text-xs text-white/60 mb-1">{stat.label}</div>
-                            <div className="text-lg font-semibold text-white">{stat.val}</div>
+                            <div className="text-base font-semibold text-white">{stat.val}</div>
                           </div>
                         ))}
                       </div>
                     </div>
                   ) : (
-                    <div className="h-full flex flex-col items-center justify-center text-white/60 px-8 text-center">
+                    <div className="h-full flex flex-col items-center justify-center text-white/60 px-6 text-center">
                       <BarChart3 size={44} className="mb-4 text-white/30" />
                       <h3 className="font-semibold text-lg text-white">No Data to Display</h3>
                       <p className="text-sm mt-2 max-w-sm">Upload a dataset or select a sample map, then run an analysis or use the preconfigured demo to generate visualizations.</p>
