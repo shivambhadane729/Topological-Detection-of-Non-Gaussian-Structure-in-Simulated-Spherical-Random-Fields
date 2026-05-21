@@ -7,6 +7,9 @@
   --primary: #f5f5f5;
   --muted: rgba(220, 220, 220, 0.68);
   --outline: rgba(255, 255, 255, 0.08);
+  --accent: #06b6d4; /* cyan accent */
+  --card-bg: rgba(6,6,8,0.6);
+  --card-border: rgba(255,255,255,0.06);
 }
 
 * {
@@ -54,6 +57,36 @@ body {
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
   }
+
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 0.5rem;
+  }
+
+  .btn-primary {
+    background: linear-gradient(90deg, var(--accent), #0ea5b1);
+    color: #041014;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0 6px 18px rgba(6,182,212,0.06), inset 0 -1px 0 rgba(255,255,255,0.02);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: var(--muted);
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+  }
+
+  /* subtle custom scrollbar for panels */
+  .thin-scroll::-webkit-scrollbar { height: 8px; width: 8px }
+  .thin-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 8px }
+  .thin-scroll::-webkit-scrollbar-track { background: transparent }
 
   .text-muted {
     color: var(--muted);

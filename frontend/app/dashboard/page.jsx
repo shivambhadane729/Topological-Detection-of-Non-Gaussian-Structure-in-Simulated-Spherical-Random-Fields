@@ -19,15 +19,19 @@ import {
 import { api } from '../../src/services/api';
 
   const Card = ({ children, title, icon: Icon, className = '', footer }) => (
-    <div className={`bg-black rounded-md border border-white/10 ${className}`}> 
+    <div className={`card ${className}`}> 
       {title && (
-        <div className="px-4 py-3 bg-black flex items-center gap-3 border-b border-white/10">
-          {Icon && <Icon size={16} className="text-on-surface-variant" />}
-          <h3 className="font-semibold text-primary text-sm">{title}</h3>
+        <div className="px-4 py-3 bg-transparent flex items-center gap-3 border-b" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+          {Icon && (
+            <div className="w-8 h-8 flex items-center justify-center rounded bg-white/4" style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))' }}>
+              <Icon size={16} className="text-white/90" />
+            </div>
+          )}
+          <h3 className="font-semibold text-white text-sm">{title}</h3>
         </div>
       )}
       <div className="p-4 flex-1">{children}</div>
-      {footer && <div className="px-4 py-3 border-t border-white/10">{footer}</div>}
+      {footer && <div className="px-4 py-3 border-t" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>{footer}</div>}
     </div>
   );
 
@@ -35,7 +39,7 @@ export default function Dashboard() {
   const [datasets, setDatasets] = useState([]);
   const [loadingDatasets, setLoadingDatasets] = useState(true);
   const [selectedDataset, setSelectedDataset] = useState(null);
-  const [showControls, setShowControls] = useState(false);
+  // left controls permanently visible
   const [preprocessConfig, setPreprocessConfig] = useState({
     apply_mask: true,
     mask_type: 'galactic',
@@ -150,7 +154,6 @@ export default function Dashboard() {
       setJobStatus('preprocessing');
       setJobMessage('Running Demo Pipeline...');
       setJobProgress(20);
-      setShowControls(false);
       const res = await api.runDemo();
       await pollJob(res.job_id, 'demo');
     } catch (err) {
@@ -167,7 +170,6 @@ export default function Dashboard() {
       setJobStatus('preprocessing');
       setJobMessage('Aligning cosmic signals...');
       setJobProgress(10);
-      setShowControls(false);
       const preprocessResponse = await api.preprocess(selectedDataset.id, preprocessConfig);
       await pollJob(preprocessResponse.job_id, 'preprocessing');
       setJobProgress(50);
@@ -288,7 +290,7 @@ export default function Dashboard() {
           font: { family: 'Inter, sans-serif' }
         }}
         useResizeHandler
-        className="w-full h-full"
+        className="w-full h-[360px] md:h-[480px] lg:h-[560px]"
       />
     );
   };
@@ -318,7 +320,7 @@ export default function Dashboard() {
           font: { family: 'Inter, sans-serif' }
         }}
         useResizeHandler
-        className="w-full h-full"
+        className="w-full h-[360px] md:h-[480px] lg:h-[560px]"
       />
     );
   };
@@ -345,7 +347,7 @@ export default function Dashboard() {
           font: { family: 'Inter, sans-serif' }
         }}
         useResizeHandler
-        className="w-full h-full"
+        className="w-full h-[360px] md:h-[480px] lg:h-[560px]"
       />
     );
   };
@@ -379,7 +381,7 @@ export default function Dashboard() {
             font: { family: 'Inter, sans-serif' }
           }}
           useResizeHandler
-          className="w-full h-full"
+          className="w-full h-[360px] md:h-[480px] lg:h-[560px]"
         />
         <div className="space-y-3 rounded-md border border-white/10 bg-black p-4">
           <h4 className="text-sm font-semibold text-white">Gaussian comparison</h4>
@@ -398,53 +400,46 @@ export default function Dashboard() {
 
   const sampleDatasets = datasets.filter((dataset) => dataset.category === 'sample');
   const otherDatasets = datasets.filter((dataset) => dataset.category !== 'sample');
-  const controlsPanelWidth = showControls ? 'xl:w-[280px]' : 'xl:w-[88px]';
+  // controls panel is always expanded
+  const showControls = true;
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col font-sans selection:bg-white/20 selection:text-black">
+    <div className="min-h-screen bg-black text-white flex flex-col font-sans selection:bg-white/20 selection:text-black overflow-x-hidden">
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 bg-black">
         {/* Dashboard Content */}
-        <div className="p-4 md:p-6 max-w-[1600px] mx-auto w-full flex flex-col gap-4">
+        <div className="p-4 md:p-6 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col gap-4">
           
           {/* Analysis View */}
           {['explore', 'compute', 'results'].includes(activeTab) && (
-            <div className={`grid grid-cols-1 xl:grid-cols-[minmax(0,${showControls ? '280px' : '88px'})_minmax(0,1fr)] gap-4`}>
+            <div className="grid grid-cols-1 xl:grid-cols-[320px_1fr] gap-6">
               
               {/* Controls Column */}
-              <div className={showControls ? 'xl:col-span-1 flex flex-col gap-3' : 'xl:col-span-1 flex flex-col gap-2'}>
-                <button
-                  onClick={() => setShowControls((current) => !current)}
-                  className="w-full rounded-md border border-white/10 bg-black px-3 py-2 text-left text-white hover:bg-white/5 transition-colors"
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <Database size={15} className="text-white/70" />
-                      <div>
-                        <div className="text-sm font-semibold leading-tight">Data</div>
-                        <div className="text-[11px] text-white/50 leading-tight">{selectedDataset?.name || 'collapsed'}</div>
-                      </div>
+              <div className="xl:col-span-1 flex flex-col gap-4">
+                <div className="w-full rounded-md text-left text-white btn-ghost flex items-center px-3 py-2">
+                  <div className="flex items-center gap-2">
+                    <Database size={15} className="text-white/70" />
+                    <div>
+                      <div className="text-sm font-semibold leading-tight">Data</div>
+                      <div className="text-[11px] text-white/50 leading-tight">{selectedDataset?.name || 'No dataset selected'}</div>
                     </div>
-                    <span className="text-[11px] text-white/55">{showControls ? 'Hide' : 'Open'}</span>
                   </div>
-                </button>
+                </div>
 
-                {showControls && (
-                  <>
-                    <Card title="Dataset" icon={Database} className="border border-white/10 overflow-hidden">
+                    <Card title="Dataset" icon={Database} className="mb-4 overflow-hidden">
                       <div className="space-y-2">
-                        <label className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-black border border-white/10 border-dashed rounded-md text-sm font-medium text-white hover:bg-white/5 cursor-pointer transition-colors">
+                        <label className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-black/40 border border-white/6 border-dashed rounded-md text-sm font-medium text-white hover:bg-white/5 cursor-pointer transition-colors">
                           <Upload size={15} className="text-accent" />
                           Upload Map (FITS)
                           <input type="file" className="hidden" accept=".fits,.fit,.npy,.npz" onChange={handleFileUpload} />
                         </label>
-                        <div className="text-[11px] text-white/45">Select a sample dataset below. The panel will minimize after you run analysis.</div>
+                        <div className="text-[11px] text-white/45">Select a sample dataset below.</div>
                       </div>
                     </Card>
 
-                    <Card title="Samples" icon={FileText} className="border border-white/10 overflow-hidden">
-                      <div className="space-y-2 max-h-[220px] overflow-y-auto pr-1">
+                    <Card title="Samples" icon={FileText} className="mb-4 overflow-hidden">
+                      <div className="space-y-2 max-h-[260px] thin-scroll overflow-y-auto pr-1">
                         {loadingDatasets ? (
                           <div className="flex justify-center py-4"><Loader2 className="animate-spin text-accent" /></div>
                         ) : sampleDatasets.length > 0 ? (
@@ -452,17 +447,17 @@ export default function Dashboard() {
                             <button
                               key={ds.id}
                               onClick={() => setSelectedDataset(ds)}
-                              className={`w-full text-left p-2.5 rounded-md border transition-colors ${
+                              className={`w-full text-left p-3 rounded-md transition-colors flex flex-col gap-1 ${
                                 selectedDataset?.id === ds.id
-                                  ? 'bg-white/5 border-white/30 text-white'
-                                  : 'bg-black border-white/10 hover:border-white/20 text-white'
+                                  ? 'bg-white/5 border border-white/20 text-white'
+                                  : 'bg-black/40 border border-white/6 hover:border-white/20 text-white'
                               }`}
                             >
                               <div className="flex justify-between items-start gap-2 mb-1">
-                                <div className="font-semibold text-[13px] truncate pr-2">{ds.name}</div>
-                                <span className="text-[9px] bg-white/5 border border-white/10 text-white/70 px-1.5 py-0.5 rounded font-medium shrink-0">S</span>
+                                <div className="font-semibold text-sm truncate pr-2">{ds.name}</div>
+                                <span className="text-[10px] bg-white/6 border border-white/8 text-white/90 px-2 py-0.5 rounded font-medium shrink-0">S</span>
                               </div>
-                              <div className="text-[11px] text-white/55 line-clamp-2">{ds.description}</div>
+                              <div className="text-[12px] text-white/65 line-clamp-2">{ds.description}</div>
                             </button>
                           ))
                         ) : (
@@ -487,37 +482,35 @@ export default function Dashboard() {
                             </select>
                           </label>
                         </div>
-                        <button 
+                        <button
                           disabled={jobStatus === 'preprocessing' || jobStatus === 'computing' || !selectedDataset}
                           onClick={runAnalysis}
-                          className={`w-full py-2 rounded-md flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
+                          className={`w-full flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
                             jobStatus === 'preprocessing' || jobStatus === 'computing' || !selectedDataset
-                              ? 'bg-black text-white/35 cursor-not-allowed border border-white/10'
-                              : 'bg-white text-black hover:bg-white/90'
-                          }`}
+                              ? 'btn-ghost cursor-not-allowed opacity-60'
+                              : 'btn-primary'
+                          } py-2`}
                         >
                           {jobStatus === 'idle' || jobStatus === 'completed' || jobStatus === 'error' ? (<><Play size={16} /> Run Analysis</>) : (<><Loader2 size={16} className="animate-spin" /> Processing...</>)}
                         </button>
-                        <button 
+                        <button
                           disabled={jobStatus === 'preprocessing' || jobStatus === 'computing'}
                           onClick={runDemo}
-                          className={`w-full py-2 rounded-md border border-white/10 flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
+                          className={`w-full flex items-center justify-center gap-2 text-sm font-medium transition-colors ${
                             jobStatus === 'preprocessing' || jobStatus === 'computing'
-                              ? 'bg-black text-white/35 cursor-not-allowed border border-white/10'
-                              : 'bg-black text-white border border-white/20 hover:bg-white/5'
-                          }`}
+                              ? 'btn-ghost cursor-not-allowed opacity-60'
+                              : 'btn-ghost'
+                          } py-2`}
                         >
                           Run Preconfigured Demo
                         </button>
                       </div>
                     </Card>
-                  </>
-                )}
               </div>
 
               {/* Visualization Column */}
               <div className="xl:col-span-1 flex flex-col gap-4">
-                <Card className="min-h-[680px] border border-white/10 overflow-hidden" title="Analysis Results" icon={BarChart3}>
+                <Card className="min-h-[520px] border border-white/10 overflow-hidden" title="Analysis Results" icon={BarChart3}>
                   {results ? (
                     <div className="h-full flex flex-col">
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
@@ -542,11 +535,11 @@ export default function Dashboard() {
                             </button>
                           ))}
                         </div>
-                        <button 
+                        <button
                           onClick={handleExport}
-                          className="flex items-center gap-2 px-3 py-1.5 bg-black border border-white/10 rounded-md text-sm font-medium text-white hover:bg-white/5 transition-colors"
+                          className="flex items-center gap-2 px-3 py-1.5 btn-ghost"
                         >
-                          <Download size={16} /> Export Data
+                          <Download size={16} className="text-white/90" /> Export Data
                         </button>
                       </div>
                       <div className="flex-1 min-h-[560px] border border-white/10 rounded-md bg-black">
