@@ -57,12 +57,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 /*# sourceURL=wp-block-library-inline-css */
 </style>
-<link rel='stylesheet' id='all-css-4' href='https://www.nasa.gov/_static/??-eJyFjkEOgjAQRS9kbdAFuDDu3HqGaRmhYTptOi2E20tEEyMLVj8zee/n6ykqGzgjZ23JLaF8UZFK51h0kakV9UzgcQppWG9tiqNWS54J5WhFDvqn5KuCtSjijCOXZ2V7tAOmj7o4WtKDab6H5CFvSnKPHkUzCLzhjoIBUgzjLorj8t3O+scg2d6NqAwwY9rFY4glKg/Dyt78tarry6k51031AvSceKI=' type='text/css' media='all' />
+<link rel='stylesheet' id='all-css-4' href='https://www.nasa.gov/_static/??-eJyFjkEKwjAQRS9kHItC6ULcufUMk3RsQ5NJyCQtvb3FKohddPWZ4b3PhykqEzgTZzDOLqF8UdGVzrJAkakV9UzoaQppWG/QxboWJM+O5GhEDvBT8lXRGBKx2jqbZ2V6MgOlj7o4IOnBbr6H5DFvSnJPngQYBd9w54JGpxjHXZTG5bud9Y9hMr0dSWlkprSLxxBLVB6Hlb35a1XXzbk51ZfqBfSTeJ0=' type='text/css' media='all' />
 <script type="text/javascript" src="https://www.nasa.gov/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZebmaeXVayjj0+Rbm5melFiSSpUsX2uraG5uYW5uam5hUEWAK/xIjE="  defer></script><script id="random-popup-display-js-extra">
 var popupData = {"popupId":"872473","randomChance":"0.1"};
 //# sourceURL=random-popup-display-js-extra
 </script>
-<script type="text/javascript" src="https://www.nasa.gov/_static/??-eJyFzEkOwjAMheELkVoghrBAnMW0VprIQ1SnTKcHiTXK5q2+98OjhtG0kTZoMwk5KDpCcUhsN+SgeB+Kb+A/FNI1NEuJqSN5fZr+dpCsHd2y0Nu0F/UZFwpuY0bu0AV1MgnV6lrDlL0yvr6Xq1y2p+P+fNjFGMsHMzplCw=="  defer></script><link rel="https://api.w.org/" href="https://www.nasa.gov/wp-json/" /><meta name="generator" content="WordPress 6.9.4" />
+<script type="text/javascript" src="https://www.nasa.gov/_static/??-eJyFzEsOwjAMRdEN4YZK0IoBYi2mtdJE/kR1Wj6rB4kxyuSNzrvhUWAyraQ11IWEPCg6huwhst2RQXHvsh/CfyikG1SLkakheXua/raTpA1dk9DbtBX1BVcCtykhN+iKOptAsbIVmJMXxtf3cpNrPw6n4dIfz2P+ADMNZP8="  defer></script><link rel="https://api.w.org/" href="https://www.nasa.gov/wp-json/" /><meta name="generator" content="WordPress 6.9.4" />
 	<link rel="preload" fetchpriority="high" href="https://www.nasa.gov/wp-content/client-mu-plugins/uswds-framework/uswds/fonts/public-sans/PublicSans-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload" fetchpriority="high" href="https://www.nasa.gov/wp-content/client-mu-plugins/uswds-framework/uswds/fonts-split/inter/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 	<link rel="preload" fetchpriority="high" href="https://www.nasa.gov/wp-content/client-mu-plugins/uswds-framework/uswds/fonts-split/db-mono/aFTU7PB1QTsUX8KYthqQBA.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -366,7 +366,7 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 		</ul>
 	</div>
 </div>
-<div class="global-nav__home global-nav__features global-nav__col grid-col-9 desktop:padding-left-105"><h3 class="heading-12 color-carbon-40 text-uppercase margin-bottom-2">Featured</h3><div class="grid-row"><a href="https://science.nasa.gov/missions/hubble/hubble-sights-galaxy-in-transition/" class="hds-content-card hds-content-card-home grid-col-12 desktop:grid-col-4 color-spacesuit-white padding-x-0 desktop:padding-right-3 margin-bottom-4" target="_self"><div class="grid-col margin-bottom-2"><div class="bg-carbon-black minh-mobile"><img src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/lenticular/Hubble_NGC1266_2_4F_flat_FINAL_crop2.tif?w=1024" alt="Hubble Sights Galaxy in Transition" class="hds-media-background z-100" /></div></div><div class="grid-col padding-left-0"><div class="label margin-bottom-1">3 min read</div><div class="margin-bottom-2"><h3 class="heading-16 line-height-md">Hubble Sights Galaxy in Transition</h3></div><div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40"><span class="display-flex flex-align-center margin-right-2"><svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg><span>article</span></span><span>6 days ago</span></div></div></a><a href="https://www.nasa.gov/missions/artemis/artemis-3/nasa-outlines-preliminary-artemis-iii-mission-plans/" class="hds-content-card hds-content-card-home grid-col-12 desktop:grid-col-4 color-spacesuit-white padding-x-0 desktop:padding-right-3 margin-bottom-4" target="_self"><div class="grid-col margin-bottom-2"><div class="bg-carbon-black minh-mobile"><img width="1024" height="683" src="https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?w=1024" class="hds-media-background z-100" alt="" style="object-position: 0% 0%" decoding="async" fetchpriority="high" srcset="https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg 3698w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=300,200 300w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=768,512 768w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=1024,683 1024w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=1536,1024 1536w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=2048,1366 2048w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=400,267 400w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=600,400 600w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=900,600 900w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=1200,800 1200w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=2000,1334 2000w" sizes="(max-width: 1024px) 100vw, 1024px" /></div></div><div class="grid-col padding-left-0"><div class="label margin-bottom-1">4 min read</div><div class="margin-bottom-2"><h3 class="heading-16 line-height-md">NASA Outlines Preliminary Artemis III Mission Plans</h3></div><div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40"><span class="display-flex flex-align-center margin-right-2"><svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg><span>article</span></span><span>1 week ago</span></div></div></a><a href="https://science.nasa.gov/solar-system/whats-up-may-2026-skywatching-tips-from-nasa/" class="hds-content-card hds-content-card-home grid-col-12 desktop:grid-col-4 color-spacesuit-white padding-x-0 desktop:padding-right-3 margin-bottom-4" target="_self"><div class="grid-col margin-bottom-2"><div class="bg-carbon-black minh-mobile"><img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar-system/skywatching/2026/may/Windmill%20moonrise_Credit_PrestonDyches.jpg?w=1024" alt="What’s Up: May 2026 Skywatching Tips from NASA" class="hds-media-background z-100" /></div></div><div class="grid-col padding-left-0"><div class="label margin-bottom-1">3 min read</div><div class="margin-bottom-2"><h3 class="heading-16 line-height-md">What’s Up: May 2026 Skywatching Tips from NASA</h3></div><div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40"><span class="display-flex flex-align-center margin-right-2"><svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg><span>article</span></span><span>3 weeks ago</span></div></div></a></div></div><div class="global-nav__secondary global-nav__col grid-col-5 desktop:padding-left-105" hidden>
+<div class="global-nav__home global-nav__features global-nav__col grid-col-9 desktop:padding-left-105"><h3 class="heading-12 color-carbon-40 text-uppercase margin-bottom-2">Featured</h3><div class="grid-row"><a href="https://science.nasa.gov/missions/hubble/hubble-sights-galaxy-in-transition/" class="hds-content-card hds-content-card-home grid-col-12 desktop:grid-col-4 color-spacesuit-white padding-x-0 desktop:padding-right-3 margin-bottom-4" target="_self"><div class="grid-col margin-bottom-2"><div class="bg-carbon-black minh-mobile"><img src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/lenticular/Hubble_NGC1266_2_4F_flat_FINAL_crop2.tif?w=1024" alt="Hubble Sights Galaxy in Transition" class="hds-media-background z-100" /></div></div><div class="grid-col padding-left-0"><div class="label margin-bottom-1">3 min read</div><div class="margin-bottom-2"><h3 class="heading-16 line-height-md">Hubble Sights Galaxy in Transition</h3></div><div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40"><span class="display-flex flex-align-center margin-right-2"><svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg><span>article</span></span><span>7 days ago</span></div></div></a><a href="https://www.nasa.gov/missions/artemis/artemis-3/nasa-outlines-preliminary-artemis-iii-mission-plans/" class="hds-content-card hds-content-card-home grid-col-12 desktop:grid-col-4 color-spacesuit-white padding-x-0 desktop:padding-right-3 margin-bottom-4" target="_self"><div class="grid-col margin-bottom-2"><div class="bg-carbon-black minh-mobile"><img width="1024" height="683" src="https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?w=1024" class="hds-media-background z-100" alt="" style="object-position: 0% 0%" decoding="async" fetchpriority="high" srcset="https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg 3698w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=300,200 300w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=768,512 768w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=1024,683 1024w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=1536,1024 1536w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=2048,1366 2048w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=400,267 400w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=600,400 600w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=900,600 900w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=1200,800 1200w, https://www.nasa.gov/wp-content/uploads/2026/05/pad.jpg?resize=2000,1334 2000w" sizes="(max-width: 1024px) 100vw, 1024px" /></div></div><div class="grid-col padding-left-0"><div class="label margin-bottom-1">4 min read</div><div class="margin-bottom-2"><h3 class="heading-16 line-height-md">NASA Outlines Preliminary Artemis III Mission Plans</h3></div><div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40"><span class="display-flex flex-align-center margin-right-2"><svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg><span>article</span></span><span>1 week ago</span></div></div></a><a href="https://science.nasa.gov/solar-system/whats-up-may-2026-skywatching-tips-from-nasa/" class="hds-content-card hds-content-card-home grid-col-12 desktop:grid-col-4 color-spacesuit-white padding-x-0 desktop:padding-right-3 margin-bottom-4" target="_self"><div class="grid-col margin-bottom-2"><div class="bg-carbon-black minh-mobile"><img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar-system/skywatching/2026/may/Windmill%20moonrise_Credit_PrestonDyches.jpg?w=1024" alt="What’s Up: May 2026 Skywatching Tips from NASA" class="hds-media-background z-100" /></div></div><div class="grid-col padding-left-0"><div class="label margin-bottom-1">3 min read</div><div class="margin-bottom-2"><h3 class="heading-16 line-height-md">What’s Up: May 2026 Skywatching Tips from NASA</h3></div><div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40"><span class="display-flex flex-align-center margin-right-2"><svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg><span>article</span></span><span>3 weeks ago</span></div></div></a></div></div><div class="global-nav__secondary global-nav__col grid-col-5 desktop:padding-left-105" hidden>
 	<div class="global-nav__secondary-wrapper global-nav__wrapper">
 
 		<!-- This is just a mobile button -->
@@ -436,7 +436,7 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 				<span>article</span>
 			</span>
 
-			<span>6 days ago</span>
+			<span>7 days ago</span>
 
 		</div>
 	</div>
@@ -571,7 +571,7 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 				<span>article</span>
 			</span>
 
-			<span>15 hours ago</span>
+			<span>24 hours ago</span>
 
 		</div>
 	</div>
@@ -631,6 +631,33 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 	</div>
 </a>
 </div><div class="global-nav__tertiary-submenu global-nav__wrapper" style="max-width: 440px" submenu-id="global-nav-solar-system"><h3 class="heading-12 color-carbon-40 text-uppercase margin-bottom-2">Highlights</h3>
+<a href="https://science.nasa.gov/science-research/heliophysics/nasas-awe-completes-mission-to-study-earths-effect-on-space-weather/" class="hds-content-card hds-content-card-3 grid-row color-spacesuit-white margin-bottom-4" target="_self">
+	<div class="grid-col">
+		<div class="width-full bg-carbon-black minh-15">
+			<img src="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/general/images/2020/09/awe-high-res-1.jpg?w=1024" alt="NASA’s AWE Completes Mission to Study Earth’s Effect on Space Weather" class="hds-media-background z-100" />		</div>
+	</div>
+
+	<div class="grid-col padding-left-105">
+
+		<div class="label margin-bottom-1">4 min read</div>
+
+		<div class="margin-bottom-2">
+			<h3 class="heading-16 line-height-md">NASA’s AWE Completes Mission to Study Earth’s Effect on Space Weather</h3>
+		</div>
+
+		<div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40">
+
+			<span class="display-flex flex-align-center margin-right-2">
+				<svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg>
+				<span>article</span>
+			</span>
+
+			<span>9 hours ago</span>
+
+		</div>
+	</div>
+</a>
+
 <a href="https://www.nasa.gov/missions/psyche-mission/nasas-psyche-mission-aces-mars-flyby-targets-metal-rich-asteroid/" class="hds-content-card hds-content-card-3 grid-row color-spacesuit-white margin-bottom-4" target="_self">
 	<div class="grid-col">
 		<div class="width-full bg-carbon-black minh-15">
@@ -684,33 +711,6 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 		</div>
 	</div>
 </a>
-
-<a href="https://science.nasa.gov/helio-and-you-seasons-on-earth-mars-and-beyond/" class="hds-content-card hds-content-card-3 grid-row color-spacesuit-white margin-bottom-4" target="_self">
-	<div class="grid-col">
-		<div class="width-full bg-carbon-black minh-15">
-			<img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia03/pia03170/PIA03170.jpg?w=1024" alt="Helio and You: Seasons on Earth, Mars, and Beyond" class="hds-media-background z-100" />		</div>
-	</div>
-
-	<div class="grid-col padding-left-105">
-
-		<div class="label margin-bottom-1">10 min read</div>
-
-		<div class="margin-bottom-2">
-			<h3 class="heading-16 line-height-md">Helio and You: Seasons on Earth, Mars, and Beyond</h3>
-		</div>
-
-		<div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40">
-
-			<span class="display-flex flex-align-center margin-right-2">
-				<svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg>
-				<span>article</span>
-			</span>
-
-			<span>6 days ago</span>
-
-		</div>
-	</div>
-</a>
 </div><div class="global-nav__tertiary-submenu global-nav__wrapper" style="max-width: 440px" submenu-id="global-nav-universe"><h3 class="heading-12 color-carbon-40 text-uppercase margin-bottom-2">Featured</h3>
 <a href="https://science.nasa.gov/missions/fermi/nasas-fermi-glimpses-power-source-of-supercharged-supernovae/" class="hds-content-card hds-content-card-3 grid-row color-spacesuit-white margin-bottom-4" target="_self">
 	<div class="grid-col">
@@ -733,7 +733,7 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 				<span>article</span>
 			</span>
 
-			<span>1 day ago</span>
+			<span>2 days ago</span>
 
 		</div>
 	</div>
@@ -787,12 +787,66 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 				<span>article</span>
 			</span>
 
-			<span>6 days ago</span>
+			<span>7 days ago</span>
 
 		</div>
 	</div>
 </a>
 </div><div class="global-nav__tertiary-submenu global-nav__wrapper" style="max-width: 440px" submenu-id="global-nav-science"><h3 class="heading-12 color-carbon-40 text-uppercase margin-bottom-2">Highlights</h3>
+<a href="https://science.nasa.gov/science-research/heliophysics/nasas-awe-completes-mission-to-study-earths-effect-on-space-weather/" class="hds-content-card hds-content-card-3 grid-row color-spacesuit-white margin-bottom-4" target="_self">
+	<div class="grid-col">
+		<div class="width-full bg-carbon-black minh-15">
+			<img src="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/general/images/2020/09/awe-high-res-1.jpg?w=1024" alt="NASA’s AWE Completes Mission to Study Earth’s Effect on Space Weather" class="hds-media-background z-100" />		</div>
+	</div>
+
+	<div class="grid-col padding-left-105">
+
+		<div class="label margin-bottom-1">4 min read</div>
+
+		<div class="margin-bottom-2">
+			<h3 class="heading-16 line-height-md">NASA’s AWE Completes Mission to Study Earth’s Effect on Space Weather</h3>
+		</div>
+
+		<div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40">
+
+			<span class="display-flex flex-align-center margin-right-2">
+				<svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg>
+				<span>article</span>
+			</span>
+
+			<span>9 hours ago</span>
+
+		</div>
+	</div>
+</a>
+
+<a href="https://science.nasa.gov/d-3-agigo-new-joint-observing-program-with-xmm-newton-added-to-ixpe-go-cycle-4/" class="hds-content-card hds-content-card-3 grid-row color-spacesuit-white margin-bottom-4" target="_self">
+	<div class="grid-col">
+		<div class="width-full bg-carbon-black minh-15">
+			<img src="https://assets.science.nasa.gov/dynamicimage/assets/science/astro/programs/physics-of-the-cosmos/images/missions/XMM-Newton.jpg?w=1024" alt="D.3 AGIGO: New joint observing program with XMM-Newton added to IXPE GO Cycle 4" class="hds-media-background z-100" />		</div>
+	</div>
+
+	<div class="grid-col padding-left-105">
+
+		<div class="label margin-bottom-1">2 min read</div>
+
+		<div class="margin-bottom-2">
+			<h3 class="heading-16 line-height-md">D.3 AGIGO: New joint observing program with XMM-Newton added to IXPE GO Cycle 4</h3>
+		</div>
+
+		<div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40">
+
+			<span class="display-flex flex-align-center margin-right-2">
+				<svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg>
+				<span>article</span>
+			</span>
+
+			<span>9 hours ago</span>
+
+		</div>
+	</div>
+</a>
+
 <a href="https://science.nasa.gov/researchers/solicitations/roses-2025/amendment-58-f-17-research-initiation-awards-final-text-and-due-date/" class="hds-content-card hds-content-card-3 grid-row color-spacesuit-white margin-bottom-4" target="_self">
 	<div class="grid-col">
 		<div class="width-full bg-carbon-black minh-15">
@@ -805,60 +859,6 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 
 		<div class="margin-bottom-2">
 			<h3 class="heading-16 line-height-md">Amendment 58: F.17 Research Initiation Awards Final Text and Due Date</h3>
-		</div>
-
-		<div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40">
-
-			<span class="display-flex flex-align-center margin-right-2">
-				<svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg>
-				<span>article</span>
-			</span>
-
-			<span>23 hours ago</span>
-
-		</div>
-	</div>
-</a>
-
-<a href="https://www.nasa.gov/science-research/earth-science/nasa-developed-ai-could-help-track-harmful-algae/" class="hds-content-card hds-content-card-3 grid-row color-spacesuit-white margin-bottom-4" target="_self">
-	<div class="grid-col">
-		<div class="width-full bg-carbon-black minh-15">
-			<img width="1024" height="683" src="https://www.nasa.gov/wp-content/uploads/2026/05/pace-gulf.png?w=1024" class="hds-media-background z-100" alt="NASA-developed AI Could Help Track Harmful Algae" style="object-position: 0% 0%" decoding="async" srcset="https://www.nasa.gov/wp-content/uploads/2026/05/pace-gulf.png 1200w, https://www.nasa.gov/wp-content/uploads/2026/05/pace-gulf.png?resize=300,200 300w, https://www.nasa.gov/wp-content/uploads/2026/05/pace-gulf.png?resize=768,512 768w, https://www.nasa.gov/wp-content/uploads/2026/05/pace-gulf.png?resize=1024,683 1024w, https://www.nasa.gov/wp-content/uploads/2026/05/pace-gulf.png?resize=400,267 400w, https://www.nasa.gov/wp-content/uploads/2026/05/pace-gulf.png?resize=600,400 600w, https://www.nasa.gov/wp-content/uploads/2026/05/pace-gulf.png?resize=900,600 900w" sizes="(max-width: 1024px) 100vw, 1024px" />		</div>
-	</div>
-
-	<div class="grid-col padding-left-105">
-
-		<div class="label margin-bottom-1">4 min read</div>
-
-		<div class="margin-bottom-2">
-			<h3 class="heading-16 line-height-md">NASA-developed AI Could Help Track Harmful Algae</h3>
-		</div>
-
-		<div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40">
-
-			<span class="display-flex flex-align-center margin-right-2">
-				<svg version="1.1" class="square-2 margin-right-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve"><g><g><path d="M8,0C3.5,0-0.1,3.7,0,8.2C0.1,12.5,3.6,16,8,16c4.4,0,8-3.6,8-8C16,3.5,12.4,0,8,0z M8,15.2 C4,15.2,0.8,12,0.8,8C0.8,4,4,0.8,8,0.8c3.9,0,7.2,3.2,7.2,7.1C15.2,11.9,12,15.2,8,15.2z"></path><path d="M5.6,12c0.8-0.8,1.6-1.6,2.4-2.4c0.8,0.8,1.6,1.6,2.4,2.4c0-2.7,0-5.3,0-8C8.8,4,7.2,4,5.6,4 C5.6,6.7,5.6,9.3,5.6,12z"></path></g></g></svg>
-				<span>article</span>
-			</span>
-
-			<span>1 day ago</span>
-
-		</div>
-	</div>
-</a>
-
-<a href="https://science.nasa.gov/missions/fermi/nasas-fermi-glimpses-power-source-of-supercharged-supernovae/" class="hds-content-card hds-content-card-3 grid-row color-spacesuit-white margin-bottom-4" target="_self">
-	<div class="grid-col">
-		<div class="width-full bg-carbon-black minh-15">
-			<img src="https://science.nasa.gov/wp-content/uploads/2026/05/sn-animation-frame.jpg" alt="NASA’s Fermi Glimpses Power Source of Supercharged Supernovae" class="hds-media-background z-100" />		</div>
-	</div>
-
-	<div class="grid-col padding-left-105">
-
-		<div class="label margin-bottom-1">5 min read</div>
-
-		<div class="margin-bottom-2">
-			<h3 class="heading-16 line-height-md">NASA’s Fermi Glimpses Power Source of Supercharged Supernovae</h3>
 		</div>
 
 		<div class="heading-12 display-flex flex-align-center font-weight-bold text-uppercase margin-bottom-1 color-carbon-40">
@@ -895,7 +895,7 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 				<span>article</span>
 			</span>
 
-			<span>22 hours ago</span>
+			<span>1 day ago</span>
 
 		</div>
 	</div>
@@ -976,7 +976,7 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 				<span>article</span>
 			</span>
 
-			<span>3 hours ago</span>
+			<span>12 hours ago</span>
 
 		</div>
 	</div>
@@ -1082,7 +1082,7 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 				<span>article</span>
 			</span>
 
-			<span>7 days ago</span>
+			<span>1 week ago</span>
 
 		</div>
 	</div>
@@ -1109,7 +1109,7 @@ var popupData = {"popupId":"872473","randomChance":"0.1"};
 				<span>article</span>
 			</span>
 
-			<span>2 days ago</span>
+			<span>3 days ago</span>
 
 		</div>
 	</div>
@@ -1373,5 +1373,5 @@ var edac_frontend_fixes = [];
 //# sourceURL=edac-frontend-fixes-js-extra
 </script>
 <script defer="defer" src="https://www.nasa.gov/wp-content/plugins/accessibility-checker/build/frontendFixes.bundle.js?ver=1.40.0" id="edac-frontend-fixes-js"></script>
-<script type="text/javascript" src="https://www.nasa.gov/wp-content/plugins/accessibility-checker-pro/build/frontendFixes.bundle.js?m=1766090823g" ></script></body>
+<script type="text/javascript" src="https://www.nasa.gov/wp-content/plugins/accessibility-checker-pro/build/frontendFixes.bundle.js?m=1768930299g" ></script></body>
 </html>
